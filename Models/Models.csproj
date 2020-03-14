@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+  </ItemGroup>
+  
+  <!--
+  docker run -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -v <sakila-db>:/docker-entrypoint-initdb.d -p 3326:3306 -d mysql:8
+  mysqladmin ping 
+  
+  // sqlite
+  //PRAGMA journal_mode=WAL;
+  //context.Database.ExecuteSqlRaw("PRAGMA synchronous=NORMAL;");
+  //context.Database.ExecuteSqlRaw("PRAGMA query_only=1;");
+  //dotnet ef dbcontext scaffold "Server=localhost;Database=BikeStores;User Id=sa;Password=455Password" Microsoft.EntityFrameworkCore.SqlServer -o BikeStores1
+  -->
+
+</Project>

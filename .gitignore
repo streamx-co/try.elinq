@@ -1,0 +1,8 @@
+obj/
+bin/
+nupkg/
+
+.idea/
+.vscode/
+ConsoleApp3/
+*.binlog
