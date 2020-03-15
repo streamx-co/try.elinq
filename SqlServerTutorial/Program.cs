@@ -68,7 +68,7 @@ namespace SqlServerTutorial {
             if (region != null && session != null)
                 ExecuteSingleExample(session, region);
             else {
-                var type = typeof(Basic.RecursiveCTE);
+                var type = typeof(Basic.InsertMulti);
                 ExecuteAllExamples(type);
 
                 var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()

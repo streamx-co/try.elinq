@@ -15,9 +15,9 @@ namespace SqlServerTutorial.Basic {
             DbContext = context;
         }
 
-        public void T2() {
+        public void T1() {
 
-            #region T2
+            #region T1
             var name = "2018 Summer Promotion";
             var discount = 0.15M;
             var startDate = "20180601";
@@ -26,10 +26,64 @@ namespace SqlServerTutorial.Basic {
             var rows = DbContext.Database.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
                 INSERT().INTO(set);
-                VALUES(set.Row((name, discount, DataTypes.DATE_T.Raw(startDate), DataTypes.DATE_T.Raw(expiredDate))));
+                VALUES(set.Row((name, discount, DataTypes.DATE.Raw(startDate), DataTypes.DATE.Raw(expiredDate))));
             });
 
             Console.WriteLine($"{rows} rows affected");
+            #endregion
+
+        }
+
+        public void T1_1() {
+
+            #region T1_1
+            var newPromo = new Promotions() {
+                PromotionName = "2018 Summer Promotion",
+                Discount = 0.15M,
+                StartDate = new DateTime(2018, 06, 01),
+                ExpiredDate = new DateTime(2018, 09, 01)
+            };
+
+            var rows = DbContext.Database.Query((Promotions promo) => {
+                var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
+                INSERT().INTO(set);
+                VALUES(set.RowFrom(newPromo));
+            });
+
+            Console.WriteLine($"{rows} rows affected");
+
+            rows = DbContext.Database.Query((Promotions promo) => {
+                var set = promo.@using((promo.PromotionName, promo.StartDate, promo.ExpiredDate, promo.Discount));
+                INSERT().INTO(set);
+                VALUES(set.RowFrom(newPromo, DEFAULT()));
+            });
+
+            Console.WriteLine($"{rows} rows affected");
+            #endregion
+
+        }
+
+        public void T2() {
+
+            #region T2
+            var newPromo = new Promotions() {
+                PromotionName = "2018 Summer Promotion",
+                Discount = 0.15M,
+                StartDate = new DateTime(2018, 06, 01),
+                ExpiredDate = new DateTime(2018, 09, 01)
+            };
+
+            var query = DbContext.Promotions.Query((Promotions promo) => {
+                var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
+                INSERT().INTO(set);
+                var r = OUTPUT(INSERTED<Promotions>());
+                VALUES(set.RowFrom(newPromo));
+
+                return r;
+            });
+
+            foreach (var promo in query)
+                Console.WriteLine((promo.PromotionId, promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
             #endregion
 
         }
