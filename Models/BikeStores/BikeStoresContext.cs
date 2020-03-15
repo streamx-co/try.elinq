@@ -26,6 +26,7 @@ namespace Models.BikeStores
         public virtual DbSet<Staffs> Staffs { get; set; }
         public virtual DbSet<Stocks> Stocks { get; set; }
         public virtual DbSet<Stores> Stores { get; set; }
+        public virtual DbSet<Taxes> Taxes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -412,6 +413,47 @@ namespace Models.BikeStores
                     .HasColumnName("zip_code")
                     .HasMaxLength(5)
                     .IsUnicode(false);
+            });
+            
+            modelBuilder.Entity<Taxes>(entity =>
+            {
+                entity.HasKey(e => e.TaxId)
+                    .HasName("PK__taxes__129B86708AB9814C");
+
+                entity.ToTable("taxes", "sales");
+
+                entity.HasIndex(e => e.State)
+                    .HasName("UQ__taxes__A9360BC310DD246B")
+                    .IsUnique();
+
+                entity.Property(e => e.TaxId).HasColumnName("tax_id");
+
+                entity.Property(e => e.AvgLocalTaxRate)
+                    .HasColumnName("avg_local_tax_rate")
+                    .HasColumnType("decimal(3, 2)");
+
+                entity.Property(e => e.CombinedRate)
+                    .HasColumnName("combined_rate")
+                    .HasColumnType("decimal(4, 2)")
+                    .HasComputedColumnSql("([state_tax_rate]+[avg_local_tax_rate])");
+
+                entity.Property(e => e.MaxLocalTaxRate)
+                    .HasColumnName("max_local_tax_rate")
+                    .HasColumnType("decimal(3, 2)");
+
+                entity.Property(e => e.State)
+                    .IsRequired()
+                    .HasColumnName("state")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StateTaxRate)
+                    .HasColumnName("state_tax_rate")
+                    .HasColumnType("decimal(3, 2)");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
             });
 
             OnModelCreatingPartial(modelBuilder);
