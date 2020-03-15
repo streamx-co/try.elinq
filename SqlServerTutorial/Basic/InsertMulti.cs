@@ -124,17 +124,17 @@ namespace SqlServerTutorial.Basic {
 
             var promos = new List<Promotions>() {newPromoSummer, newPromoFall, newPromoWinter};
 
-            T2_3(promos);
+            T2_Batch(promos);
         }
 
         #region T2_3
-        private void T2_3(IList<Promotions> promos) {
+        private void T2_Batch(IList<Promotions> promos) {
             var query = DbContext.Promotions.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
 
                 INSERT().INTO(set);
                 var r = OUTPUT(INSERTED<Promotions>());
-                VALUES(BuildBatch<(String, decimal?, DateTime, DateTime)>(promos)(set));
+                VALUES(set.RowsFrom(promos));
 
                 return r;
             });
@@ -143,17 +143,5 @@ namespace SqlServerTutorial.Basic {
                 Console.WriteLine((promo.PromotionId, promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
         }
         #endregion
-
-        [Local]
-        public Func<IProjection<Promotions, T>, T[]> BuildBatch<T>(IList<Promotions> promos) where T : struct, ITuple {
-            Func<IProjection<Promotions, T>, T[]> result = set => new T[] { };
-
-            foreach (var promo in promos) {
-                var current = result;
-                result = set => Params(set.RowFrom(promo), current(set));
-            }
-
-            return result;
-        }
     }
 }
