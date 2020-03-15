@@ -15,6 +15,7 @@ namespace Models.BikeStores
         {
         }
 
+        public virtual DbSet<Addresses> Addresses { get; set; }
         public virtual DbSet<Brands> Brands { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
@@ -28,6 +29,37 @@ namespace Models.BikeStores
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Addresses>(entity =>
+            {
+                entity.HasKey(e => e.AddressId)
+                    .HasName("PK__addresse__CAA247C8028926FC");
+
+                entity.ToTable("addresses", "sales");
+
+                entity.Property(e => e.AddressId).HasColumnName("address_id");
+
+                entity.Property(e => e.City)
+                    .HasColumnName("city")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.State)
+                    .HasColumnName("state")
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Street)
+                    .IsRequired()
+                    .HasColumnName("street")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ZipCode)
+                    .HasColumnName("zip_code")
+                    .HasMaxLength(5)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<Brands>(entity =>
             {
                 entity.HasKey(e => e.BrandId)
