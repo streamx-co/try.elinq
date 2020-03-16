@@ -55,7 +55,7 @@ namespace SqlServerTutorial.Basic {
                 PrepareStagingCategories(category);
                 var staging = ToTable<Category>(CATEGORY_STAGING);
 
-                MERGE().INTO(category).USING(staging).ON(category.CategoryId == staging.CategoryId);
+                MERGE().INTO(category).USING(staging).ON(category == staging);
 
                 WHEN_MATCHED()
                     .THEN(MERGE_UPDATE()
