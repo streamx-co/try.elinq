@@ -18,6 +18,7 @@ namespace Models.BikeStores
         public virtual DbSet<Addresses> Addresses { get; set; }
         public virtual DbSet<Brands> Brands { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Commissions> Commissions { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<OrderItems> OrderItems { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
@@ -26,6 +27,7 @@ namespace Models.BikeStores
         public virtual DbSet<Staffs> Staffs { get; set; }
         public virtual DbSet<Stocks> Stocks { get; set; }
         public virtual DbSet<Stores> Stores { get; set; }
+        public virtual DbSet<Targets> Targets { get; set; }
         public virtual DbSet<Taxes> Taxes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -91,6 +93,39 @@ namespace Models.BikeStores
                     .HasColumnName("category_name")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+            });
+            
+            modelBuilder.Entity<Commissions>(entity =>
+            {
+                entity.HasKey(e => e.StaffId)
+                    .HasName("PK__commissi__1963DD9C6C1FA32F");
+
+                entity.ToTable("commissions", "sales");
+
+                entity.Property(e => e.StaffId)
+                    .HasColumnName("staff_id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.BaseAmount)
+                    .HasColumnName("base_amount")
+                    .HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.Commission)
+                    .HasColumnName("commission")
+                    .HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.TargetId).HasColumnName("target_id");
+
+                entity.HasOne(d => d.Staff)
+                    .WithOne(p => p.Commissions)
+                    .HasForeignKey<Commissions>(d => d.StaffId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__commissio__staff__6B24EA82");
+
+                entity.HasOne(d => d.Target)
+                    .WithMany(p => p.Commissions)
+                    .HasForeignKey(d => d.TargetId)
+                    .HasConstraintName("FK__commissio__targe__6A30C649");
             });
 
             modelBuilder.Entity<Customers>(entity =>
@@ -413,6 +448,22 @@ namespace Models.BikeStores
                     .HasColumnName("zip_code")
                     .HasMaxLength(5)
                     .IsUnicode(false);
+            });
+            
+            modelBuilder.Entity<Targets>(entity =>
+            {
+                entity.HasKey(e => e.TargetId)
+                    .HasName("PK__targets__57D3816E25CC8974");
+
+                entity.ToTable("targets", "sales");
+
+                entity.Property(e => e.TargetId)
+                    .HasColumnName("target_id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Percentage)
+                    .HasColumnName("percentage")
+                    .HasColumnType("decimal(4, 2)");
             });
             
             modelBuilder.Entity<Taxes>(entity =>

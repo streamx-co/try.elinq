@@ -74,4 +74,44 @@ INSERT INTO sales.taxes(state,state_tax_rate,avg_local_tax_rate,max_local_tax_ra
 INSERT INTO sales.taxes(state,state_tax_rate,avg_local_tax_rate,max_local_tax_rate) VALUES('West Virginia',0.06,0,0.01);
 INSERT INTO sales.taxes(state,state_tax_rate,avg_local_tax_rate,max_local_tax_rate) VALUES('Wisconsin',0.05,0,0.01);
 INSERT INTO sales.taxes(state,state_tax_rate,avg_local_tax_rate,max_local_tax_rate) VALUES('Wyoming',0.04,0.01,0.02);
-INSERT INTO sales.taxes(state,state_tax_rate,avg_local_tax_rate,max_local_tax_rate) VALUES('D.C.',0.05,0,0); 
+INSERT INTO sales.taxes(state,state_tax_rate,avg_local_tax_rate,max_local_tax_rate) VALUES('D.C.',0.05,0,0);
+
+CREATE TABLE sales.targets
+(
+    target_id  INT PRIMARY KEY,
+    percentage DECIMAL(4, 2)
+        NOT NULL DEFAULT 0
+);
+
+INSERT INTO
+    sales.targets(target_id, percentage)
+VALUES
+    (1,0.2),
+    (2,0.3),
+    (3,0.5),
+    (4,0.6),
+    (5,0.8);
+    
+CREATE TABLE sales.commissions
+(
+    staff_id    INT PRIMARY KEY,
+    target_id   INT,
+    base_amount DECIMAL(10, 2)
+        NOT NULL DEFAULT 0,
+    commission  DECIMAL(10, 2)
+        NOT NULL DEFAULT 0,
+    FOREIGN KEY(target_id)
+        REFERENCES sales.targets(target_id),
+    FOREIGN KEY(staff_id)
+        REFERENCES sales.staffs(staff_id),
+);
+
+INSERT INTO
+    sales.commissions(staff_id, base_amount, target_id)
+VALUES
+    (1,100000,2),
+    (2,120000,1),
+    (3,80000,3),
+    (4,900000,4),
+    (5,950000,5);
+ 

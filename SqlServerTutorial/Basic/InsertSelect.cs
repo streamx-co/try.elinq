@@ -21,7 +21,7 @@ namespace SqlServerTutorial.Basic {
             var rows = DbContext.Database.Query((Customers customer, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
-                INSERT().INTO(address, set.ColumnNames());
+                INSERT().INTO(set);
                 SELECT((customer.Street, customer.City, customer.State, customer.ZipCode));
                 FROM(customer);
             });
@@ -39,7 +39,7 @@ namespace SqlServerTutorial.Basic {
             var rows = DbContext.Database.Query((Stores stores, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
-                INSERT().INTO(address, set.ColumnNames());
+                INSERT().INTO(set);
                 SELECT((stores.Street, stores.City, stores.State, stores.ZipCode));
                 FROM(stores);
                 WHERE(cities.Contains(stores.City));
@@ -56,7 +56,7 @@ namespace SqlServerTutorial.Basic {
             var rows = DbContext.Database.Query((Customers customer, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
-                INSERT(TOP(10)).INTO(address, set.ColumnNames());
+                INSERT(TOP(10)).INTO(set);
                 SELECT((customer.Street, customer.City, customer.State, customer.ZipCode));
                 FROM(customer);
             });
@@ -72,7 +72,7 @@ namespace SqlServerTutorial.Basic {
             var rows = DbContext.Database.Query((Customers customer, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
-                INSERT(TOP(10).PERCENT()).INTO(address, set.ColumnNames());
+                INSERT(TOP(10).PERCENT()).INTO(set);
                 SELECT((customer.Street, customer.City, customer.State, customer.ZipCode));
                 FROM(customer);
             });
