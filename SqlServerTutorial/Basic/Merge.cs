@@ -14,45 +14,44 @@ namespace SqlServerTutorial.Basic {
         const String CATEGORY_STAGING = "#category_staging";
 
         private MyContext DbContext { get; }
-        private static IList<Category> stagingCategories;
 
         public Merge(MyContext context) {
             DbContext = context;
+        }
 
-            Category c1 = new Category() {
+        public void T1() {
+
+            var cat1 = new Category() {
                 CategoryId = 1,
                 CategoryName = "Children Bicycles",
                 Amount = 15000,
             };
-            Category c3 = new Category() {
+            var cat3 = new Category() {
                 CategoryId = 3,
                 CategoryName = "Cruisers Bicycles",
                 Amount = 13000,
             };
-            Category c4 = new Category() {
+            var cat4 = new Category() {
                 CategoryId = 4,
                 CategoryName = "Cyclocross Bicycles",
                 Amount = 20000,
             };
-            Category c5 = new Category() {
+            var cat5 = new Category() {
                 CategoryId = 5,
                 CategoryName = "Electric Bikes",
                 Amount = 10000,
             };
-            Category c6 = new Category() {
+            var cat6 = new Category() {
                 CategoryId = 6,
                 CategoryName = "Mountain Bikes",
                 Amount = 10000,
             };
 
-            stagingCategories = new List<Category>() {c1, c3, c4, c5, c6};
-        }
-
-        public void T1() {
-
             #region T1
+            var stagingCategories = new List<Category> {cat1, cat3, cat4, cat5, cat6};
+
             var query = DbContext.Category.Query((Category category) => {
-                PrepareStagingCategories(category);
+                PrepareStagingCategories(category, stagingCategories);
                 var staging = ToTable<Category>(CATEGORY_STAGING);
 
                 MERGE().INTO(category).USING(staging).ON(category == staging);
@@ -80,16 +79,16 @@ namespace SqlServerTutorial.Basic {
 
         }
 
-        private static void PrepareStagingCategories(Category category) {
+        private static void PrepareStagingCategories(Category category, IEnumerable<Category> stagingCategories) {
 
-            var categoryStaging = ToTable<Category>(CATEGORY_STAGING);
+            var staging = ToTable<Category>(CATEGORY_STAGING);
 
-            SELECT(TOP(0).Of(category)).INTO(categoryStaging);
+            SELECT(TOP(0).Of(category)).INTO(staging);
             FROM(category);
 
             Semicolon();
 
-            var set = categoryStaging.@using((categoryStaging.CategoryId, categoryStaging.CategoryName, categoryStaging.Amount));
+            var set = staging.@using((staging.CategoryId, staging.CategoryName, staging.Amount));
             INSERT().INTO(set);
             VALUES(set.RowsFrom(stagingCategories));
 
