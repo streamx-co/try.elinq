@@ -14,6 +14,23 @@ namespace SqlServerTutorial.Basic {
             DbContext = context;
         }
 
+        public void A() {
+
+            #region A
+            var query = DbContext.Set<FullName>()
+                .Query((Customers customer, FullName alias) => {
+                    var result = SELECT<FullName>(customer.FirstName.@as(alias.FirstName), customer.LastName.@as(alias.LastName));
+                    FROM(customer);
+
+                    return result;
+                });
+
+            foreach (var customer in query.Take(3))
+                Console.WriteLine((customer.FirstName, customer.LastName));
+            #endregion
+
+        }
+
         public void B() {
 
             #region B
@@ -36,13 +53,13 @@ namespace SqlServerTutorial.Basic {
             var state = "CA";
 
             var query = DbContext.Customers.Query((Customers customer) => {
-                var result = SELECT(customer);
-                FROM(customer);
-                WHERE(customer.State == state);
-                ORDER(BY(customer.FirstName));
+                    var result = SELECT(customer);
+                    FROM(customer);
+                    WHERE(customer.State == state);
 
-                return result;
-            }).AsEnumerable();
+                    return result;
+                })
+                .OrderBy(c => c.FirstName);
 
             foreach (var customer in query.Take(3))
                 Console.WriteLine((customer.CustomerId, customer.FirstName, customer.LastName));
@@ -50,24 +67,49 @@ namespace SqlServerTutorial.Basic {
 
         }
         
+        public void D() {
+
+            #region D
+            var state = "CA";
+
+            var query = DbContext.Set<CityCount>()
+                .Query((Customers customer, CityCount cityCount) => {
+                    var count = COUNT();
+                    var result = SELECT<CityCount>(customer.City.@as(cityCount.City), count.@as(cityCount.Count));
+                    FROM(customer);
+                    WHERE(customer.State == state);
+                    GROUP(BY(customer.City));
+
+                    return result;
+                })
+                .OrderBy(cc => cc.City);
+
+            foreach (var cityCount in query.Take(3))
+                Console.WriteLine((cityCount.City, cityCount.Count));
+            #endregion
+
+        }
+
         public void E() {
 
             #region E
             var state = "CA";
+            var minCount = 10;
 
-            var query = DbContext.Set<CityCount>().Query((Customers customer, CityCount cityCount) => {
-                var count = COUNT();
-                var result = SELECT<CityCount>(customer.City.@as(cityCount.City), count.@as(cityCount.Count));
-                FROM(customer);
-                WHERE(customer.State == state);
-                GROUP(BY(customer.City));
-                HAVING(count > 10);
-                ORDER(BY(customer.City));
+            var query = DbContext.Set<CityCount>()
+                .Query((Customers customer, CityCount cityCount) => {
+                    var count = COUNT();
+                    var result = SELECT<CityCount>(customer.City.@as(cityCount.City), count.@as(cityCount.Count));
+                    FROM(customer);
+                    WHERE(customer.State == state);
+                    GROUP(BY(customer.City));
+                    HAVING(count > minCount);
 
-                return result;
-            }).AsEnumerable();
+                    return result;
+                })
+                .OrderBy(cc => cc.City);
 
-            foreach (var cityCount in query.Take(5))
+            foreach (var cityCount in query)
                 Console.WriteLine((cityCount.City, cityCount.Count));
             #endregion
 

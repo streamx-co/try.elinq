@@ -17,13 +17,13 @@ namespace SqlServerTutorial.Basic {
 
             #region A
             var query = DbContext.Products.Query((Products products) => {
-                var result = SELECT(products);
-                FROM(products);
-                WHERE(products.CategoryId == 1);
-                ORDER(BY(products.ListPrice).DESC);
+                    var result = SELECT(products);
+                    FROM(products);
+                    WHERE(products.CategoryId == 1);
 
-                return result;
-            }).AsEnumerable();
+                    return result;
+                })
+                .OrderByDescending(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));
@@ -38,10 +38,9 @@ namespace SqlServerTutorial.Basic {
                 var result = SELECT(products);
                 FROM(products);
                 WHERE(products.CategoryId == 1 && products.ModelYear == 2018);
-                ORDER(BY(products.ListPrice).DESC);
 
                 return result;
-            }).AsEnumerable();
+            }).OrderByDescending(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));
@@ -56,11 +55,10 @@ namespace SqlServerTutorial.Basic {
                     var result = SELECT(products);
                     FROM(products);
                     WHERE(products.ListPrice > 300 && products.ModelYear == 2018);
-                    ORDER(BY(products.ListPrice).DESC);
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderByDescending(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));
@@ -74,12 +72,11 @@ namespace SqlServerTutorial.Basic {
             var query = DbContext.Products.Query((Products products) => {
                     var result = SELECT(products);
                     FROM(products);
-                    WHERE(products.ListPrice > 300 || products.ModelYear == 2018);
-                    ORDER(BY(products.ListPrice).DESC);
+                    WHERE(products.ListPrice > 3000 || products.ModelYear == 2018);
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderByDescending(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));
@@ -97,11 +94,10 @@ namespace SqlServerTutorial.Basic {
                     var result = SELECT(products);
                     FROM(products);
                     WHERE(BETWEEN(products.ListPrice, low, high));
-                    ORDER(BY(products.ListPrice).DESC);
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderByDescending(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));
@@ -118,11 +114,10 @@ namespace SqlServerTutorial.Basic {
                     var result = SELECT(products);
                     FROM(products);
                     WHERE(values.Contains(products.ListPrice));
-                    ORDER(BY(products.ListPrice).DESC);
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderByDescending(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));
@@ -139,11 +134,10 @@ namespace SqlServerTutorial.Basic {
                     var result = SELECT(products);
                     FROM(products);
                     WHERE(products.ProductName.Contains(letters));
-                    ORDER(BY(products.ListPrice));
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderBy(p => p.ListPrice);
 
             foreach (var product in query.Take(3))
                 Console.WriteLine((product.ProductId, product.ProductName, product.CategoryId, product.ModelYear, product.ListPrice));

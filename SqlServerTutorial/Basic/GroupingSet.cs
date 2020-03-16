@@ -72,15 +72,14 @@ namespace SqlServerTutorial.Basic {
                 .Query(() => {
                     var salesSummary = GetSalesSummaryTable();
 
-                    WITH(salesSummary);
-
                     var result = SELECT(salesSummary);
                     FROM(salesSummary);
-                    ORDER(BY(salesSummary.Brand), BY(salesSummary.Category), BY(salesSummary.ModelYear));
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderBy(ss => ss.Brand)
+                .ThenBy(ss => ss.Category)
+                .ThenBy(ss => ss.ModelYear);
 
             foreach (var salesSummary in query.Take(3))
                 Console.WriteLine((salesSummary.Brand, salesSummary.Category, salesSummary.ModelYear, salesSummary.Sales));
@@ -95,8 +94,6 @@ namespace SqlServerTutorial.Basic {
                 .Query((SalesGrouping alias) => {
                     var salesSummary = GetSalesSummaryTable();
 
-                    WITH(salesSummary);
-
                     var result = SELECT<SalesGrouping>(GROUPING(salesSummary.Brand).@as(alias.GroupingBrand),
                         GROUPING(salesSummary.Category).@as(alias.GroupingCategory),
                         salesSummary.Brand.@as(alias.Brand),
@@ -108,11 +105,11 @@ namespace SqlServerTutorial.Basic {
                         SET(salesSummary.Brand),
                         SET(salesSummary.Category),
                         SET())));
-                    ORDER(BY(salesSummary.Brand), BY(salesSummary.Category));
 
                     return result;
                 })
-                .AsEnumerable();
+                .OrderBy(ss => ss.Brand)
+                .ThenBy(ss => ss.Category);
 
             foreach (var salesSummary in query.Take(3))
                 Console.WriteLine((salesSummary.GroupingBrand, salesSummary.GroupingCategory, salesSummary.Brand ?? "NULL", salesSummary.Category ?? "NULL",
@@ -145,8 +142,6 @@ namespace SqlServerTutorial.Basic {
                 .Query((SalesSummary alias) => {
                     var salesSummary = GetSalesSummaryTable();
 
-                    WITH(salesSummary);
-
                     var result = SELECT<SalesSummary>(salesSummary.Brand.@as(alias.Brand),
                         salesSummary.Category.@as(alias.Category),
                         SUM(salesSummary.Sales).@as(alias.Sales));
@@ -155,8 +150,7 @@ namespace SqlServerTutorial.Basic {
                     GROUP(BY(CUBE(salesSummary.Brand, salesSummary.Category)));
 
                     return result;
-                })
-                .AsEnumerable();
+                });
 
             foreach (var salesSummary in query.Take(3))
                 Console.WriteLine((salesSummary.Brand, salesSummary.Category, salesSummary.Sales));
@@ -171,8 +165,6 @@ namespace SqlServerTutorial.Basic {
                 .Query((SalesSummary alias) => {
                     var salesSummary = GetSalesSummaryTable();
 
-                    WITH(salesSummary);
-
                     var result = SELECT<SalesSummary>(salesSummary.Brand.@as(alias.Brand),
                         salesSummary.Category.@as(alias.Category),
                         SUM(salesSummary.Sales).@as(alias.Sales));
@@ -181,8 +173,7 @@ namespace SqlServerTutorial.Basic {
                     GROUP(BY(ROLLUP(salesSummary.Brand, salesSummary.Category)));
 
                     return result;
-                })
-                .AsEnumerable();
+                });
 
             foreach (var salesSummary in query.Take(3))
                 Console.WriteLine((salesSummary.Brand, salesSummary.Category, salesSummary.Sales));
