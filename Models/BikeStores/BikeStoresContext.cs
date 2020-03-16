@@ -18,6 +18,7 @@ namespace Models.BikeStores
         public virtual DbSet<Addresses> Addresses { get; set; }
         public virtual DbSet<Brands> Brands { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Commissions> Commissions { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<OrderItems> OrderItems { get; set; }
@@ -87,6 +88,25 @@ namespace Models.BikeStores
                 entity.ToTable("categories", "production");
 
                 entity.Property(e => e.CategoryId).HasColumnName("category_id");
+
+                entity.Property(e => e.CategoryName)
+                    .IsRequired()
+                    .HasColumnName("category_name")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+            });
+            
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.ToTable("category", "sales");
+
+                entity.Property(e => e.CategoryId)
+                    .HasColumnName("category_id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Amount)
+                    .HasColumnName("amount")
+                    .HasColumnType("decimal(10, 2)");
 
                 entity.Property(e => e.CategoryName)
                     .IsRequired()

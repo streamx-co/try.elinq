@@ -68,7 +68,7 @@ namespace SqlServerTutorial {
             if (region != null && session != null)
                 ExecuteSingleExample(session, region);
             else {
-                var type = typeof(Basic.Delete);
+                var type = typeof(Basic.Merge);
                 ExecuteAllExamples(type);
 
                 var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()

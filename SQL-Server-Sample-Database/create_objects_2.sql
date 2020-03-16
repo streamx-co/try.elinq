@@ -114,4 +114,16 @@ VALUES
     (3,80000,3),
     (4,900000,4),
     (5,950000,5);
+
+CREATE TABLE sales.category (
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL,
+    amount DECIMAL(10 , 2 )
+);
+
+INSERT INTO sales.category(category_id, category_name, amount)
+VALUES(1,'Children Bicycles',15000),
+    (2,'Comfort Bicycles',25000),
+    (3,'Cruisers Bicycles',13000),
+    (4,'Cyclocross Bicycles',10000);
  
