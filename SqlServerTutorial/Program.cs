@@ -71,14 +71,14 @@ namespace SqlServerTutorial {
                 var type = typeof(Basic.GroupingSet);
                 ExecuteAllExamples(type);
 
-                var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
+                /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
                     from cat in Categories
                     let ns = RootNamespace + "." + cat
                     where t.Namespace == ns && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
                     select t;
                 
-                // foreach (var t in toExecute)
-                //     ExecuteAllExamples(t);
+                foreach (var t in toExecute)
+                    ExecuteAllExamples(t);*/
             }
         }
 

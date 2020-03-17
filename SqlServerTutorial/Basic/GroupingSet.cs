@@ -5,6 +5,7 @@ using Streamx.Linq.SQL;
 using Streamx.Linq.SQL.EFCore;
 using static Streamx.Linq.SQL.SQL;
 using static Streamx.Linq.SQL.Directives;
+using static Streamx.Linq.SQL.Library;
 using static Streamx.Linq.SQL.AggregateFunctions;
 using static Streamx.Linq.SQL.ScalarFunctions;
 
@@ -52,6 +53,7 @@ namespace SqlServerTutorial.Basic {
 
         }
 
+        #region SalesSummary1
         private static SalesSummaryByYear GetSalesSummaryTable() {
             return SubQuery((OrderItems i, Products p, Brands b, Categories c, SalesSummaryByYear alias) => {
                 var r = SELECT<SalesSummaryByYear>(b.BrandName.@as(alias.Brand),
@@ -65,27 +67,18 @@ namespace SqlServerTutorial.Basic {
             });
         }
 
+        // Don't change method name
         public void SalesSummary1() {
-
-            #region SalesSummary1
             var query = DbContext.Set<SalesSummaryByYear>()
-                .Query(() => {
-                    var salesSummary = GetSalesSummaryTable();
-
-                    var result = SELECT(salesSummary);
-                    FROM(salesSummary);
-
-                    return result;
-                })
+                .Query(() => SelectAll(GetSalesSummaryTable()))
                 .OrderBy(ss => ss.Brand)
                 .ThenBy(ss => ss.Category)
                 .ThenBy(ss => ss.ModelYear);
 
             foreach (var salesSummary in query.Take(3))
                 Console.WriteLine((salesSummary.Brand, salesSummary.Category, salesSummary.ModelYear, salesSummary.Sales));
-            #endregion
-
         }
+        #endregion
 
         public void SalesSummary2() {
 
@@ -157,7 +150,7 @@ namespace SqlServerTutorial.Basic {
             #endregion
 
         }
-        
+
         public void SalesRollup() {
 
             #region SalesRollup
