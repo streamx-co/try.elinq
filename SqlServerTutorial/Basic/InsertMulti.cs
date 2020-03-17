@@ -60,7 +60,6 @@ namespace SqlServerTutorial.Basic {
 
         public void T2_1() {
 
-            #region T2_1
             var newPromoSummer = new Promotions() {
                 PromotionName = "2020 Summer Promotion",
                 Discount = 0.25M,
@@ -82,6 +81,7 @@ namespace SqlServerTutorial.Basic {
                 ExpiredDate = new DateTime(2021, 01, 01)
             };
 
+            #region T2_1
             var query = DbContext.Promotions.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
                 var rows = new[] {set.RowFrom(newPromoSummer), set.RowFrom(newPromoFall), set.RowFrom(newPromoWinter)};
@@ -128,7 +128,7 @@ namespace SqlServerTutorial.Basic {
         }
 
         #region T2_3
-        private void T2_Batch(IList<Promotions> promos) {
+        private void T2_Batch(IEnumerable<Promotions> promos) {
             var query = DbContext.Promotions.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
 

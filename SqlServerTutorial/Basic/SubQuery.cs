@@ -24,8 +24,35 @@ namespace SqlServerTutorial.Basic {
             #region T1
             var city = "New York";
 
-            var query = DbContext.Set<SalesOrder>()
-                .Query((Orders orders, SalesOrder alias) => {
+            var query = DbContext.Orders
+                .Query((Orders orders) => {
+                    var r = SELECT(orders);
+                    FROM(orders);
+                    WHERE(SubQuery((Customers customers) => {
+                        var id = SELECT((int?) customers.CustomerId);
+                        FROM(customers);
+                        WHERE(customers.City == city);
+                        return id.AsCollection();
+                    }).Contains(orders.CustomerId));
+
+                    return r;
+                })
+                .OrderByDescending(so => so.OrderDate)
+                .Include(so => so.Customer);
+
+            foreach (var order in query.Take(3))
+                Console.WriteLine((order.OrderId, order.OrderDate, order.Customer.CustomerId));
+            #endregion
+
+        }
+        
+        public void T1_1() {
+
+            #region T1_1
+            var city = "New York";
+
+            var query = DbContext.Orders
+                .Query((Orders orders) => {
                     var customersInCity = SubQuery((Customers customers) => {
                         var id = SELECT((int?) customers.CustomerId);
                         FROM(customers);
@@ -33,19 +60,17 @@ namespace SqlServerTutorial.Basic {
                         return id.AsCollection();
                     });
 
-                    var r = SELECT<SalesOrder>(orders.CustomerId.@as(alias.Customer.CustomerId),
-                        orders.OrderId.@as(alias.Order.OrderId));
+                    var r = SELECT(orders);
                     FROM(orders);
                     WHERE(customersInCity.Contains(orders.CustomerId));
 
                     return r;
                 })
-                .OrderByDescending(so => so.Order.OrderDate)
-                .Include(so => so.Customer)
-                .Include(so => so.Order);
+                .OrderByDescending(so => so.OrderDate)
+                .Include(so => so.Customer);
 
-            foreach (var salesOrder in query.Take(3))
-                Console.WriteLine((salesOrder.Order.OrderId, salesOrder.Order.OrderDate, salesOrder.Customer.CustomerId));
+            foreach (var order in query.Take(3))
+                Console.WriteLine((order.OrderId, order.OrderDate, order.Customer.CustomerId));
             #endregion
 
         }
@@ -134,7 +159,7 @@ namespace SqlServerTutorial.Basic {
 
         }
 
-        public void T6() {
+        /*public void T6() {
 
             #region T6
             var query = DbContext.Products
@@ -158,7 +183,7 @@ namespace SqlServerTutorial.Basic {
                 Console.WriteLine((product.ProductName, product.ListPrice));
             #endregion
 
-        }
+        }*/
 
         public void T7() {
 
@@ -185,7 +210,7 @@ namespace SqlServerTutorial.Basic {
             #endregion
 
         }
-        
+
         public void T8() {
 
             #region T8

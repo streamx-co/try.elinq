@@ -47,7 +47,6 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<SalesGrouping>(entity => entity.HasNoKey());
             modelBuilder.Entity<Scalar<int>>(entity => entity.HasNoKey());
             modelBuilder.Entity<Scalar<String>>(entity => entity.HasNoKey());
-            modelBuilder.Entity<SalesOrder>(entity => entity.HasNoKey());
             modelBuilder.Entity<OrderMaxListPrice>(entity => entity.HasNoKey());
             modelBuilder.Entity<StaffSales>(entity => entity.HasNoKey());
             modelBuilder.Entity<CTECategoryCounts>(entity => entity.HasNoKey());
@@ -68,7 +67,7 @@ namespace SqlServerTutorial {
             if (region != null && session != null)
                 ExecuteSingleExample(session, region);
             else {
-                var type = typeof(Basic.GroupingSet);
+                var type = typeof(Basic.InsertMulti);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()

@@ -1,5 +1,6 @@
 using System;
 using Models.BikeStores;
+using Streamx.Linq.SQL.Grammar;
 
 namespace SqlServerTutorial {
     
@@ -85,12 +86,7 @@ namespace SqlServerTutorial {
     public class Scalar<T> {
         public T Value { get; set; }
     }
-    
-    public class SalesOrder {
-        public Orders Order { get; set; }
-        public Customers Customer { get; set; }
-    }
-    
+
     public class OrderMaxListPrice {
         public Orders Order { get; set; }
         public decimal MaxListPrice { get; set; }
@@ -101,11 +97,15 @@ namespace SqlServerTutorial {
         public decimal Sales { get; set; }
     }
     
-    public class CTECategoryCounts {
+    [Tuple]
+    public class CTECategorySales {
         public int CategoryId { get; set; }
+        public decimal Sales { get; set; }
+    }
+    
+    public class CTECategoryCounts : CTECategorySales {
         public String CategoryName { get; set; }
         public int ProductCount { get; set; }
-        public decimal Sales { get; set; }
     }
     
     public class CategoryCounts {

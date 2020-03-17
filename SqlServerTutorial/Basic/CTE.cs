@@ -87,12 +87,6 @@ namespace SqlServerTutorial.Basic {
 
         }
 
-        [Tuple]
-        public class CTECategorySales {
-            public int CategoryId { get; set; }
-            public decimal Sales { get; set; }
-        }
-
         public void C() {
 
             #region C
