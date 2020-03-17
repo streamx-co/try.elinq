@@ -9,7 +9,7 @@ using static Streamx.Linq.SQL.TransactSQL.SQL;
 namespace SqlServerTutorial.Basic {
     class Delete {
         
-        const String product_history = "#product_history";
+        const String PRODUCT_HISTORY = "#product_history";
         
         private MyContext DbContext { get; }
 
@@ -22,7 +22,7 @@ namespace SqlServerTutorial.Basic {
             #region T1
             var rows = DbContext.Database.Query((Products products) => {
                 PrepareProductHistory(products);
-                var productHistory = ToTable<Products>(product_history);
+                var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
                 DELETE(TOP(21)).FROM(productHistory);
             });
@@ -36,7 +36,7 @@ namespace SqlServerTutorial.Basic {
             #region T2
             var rows = DbContext.Database.Query((Products products) => {
                 PrepareProductHistory(products);
-                var productHistory = ToTable<Products>(product_history);
+                var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
                 DELETE(TOP(5).PERCENT()).FROM(productHistory);
             });
@@ -50,7 +50,7 @@ namespace SqlServerTutorial.Basic {
             #region T3
             var rows = DbContext.Database.Query((Products products) => {
                 PrepareProductHistory(products);
-                var productHistory = ToTable<Products>(product_history);
+                var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
                 DELETE().FROM(productHistory);
                 WHERE(productHistory.ModelYear == 2017);
@@ -65,7 +65,7 @@ namespace SqlServerTutorial.Basic {
             #region T4
             var rows = DbContext.Database.Query((Products products) => {
                 PrepareProductHistory(products);
-                var productHistory = ToTable<Products>(product_history);
+                var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
                 DELETE().FROM(productHistory);
             });
@@ -76,7 +76,7 @@ namespace SqlServerTutorial.Basic {
 
         private static void PrepareProductHistory(Products products) {
 
-            var productHistory = ToTable<Products>(product_history);
+            var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
             SELECT(products).INTO(productHistory);
             FROM(products);
