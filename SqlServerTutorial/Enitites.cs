@@ -113,4 +113,10 @@ namespace SqlServerTutorial {
         public int ProductCount { get; set; }
         public decimal Sales { get; set; }
     }
+    
+    public class ProductInYear {
+        public String ProductName { get; set; }
+        public short ModelYear { get; set; }
+        public decimal ListPrice { get; set; }
+    }
 }

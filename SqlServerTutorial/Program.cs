@@ -52,6 +52,19 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<StaffSales>(entity => entity.HasNoKey());
             modelBuilder.Entity<CTECategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<CategoryCounts>(entity => entity.HasNoKey());
+            modelBuilder.Entity<ProductInYear>(entity => {
+
+                entity.HasNoKey();
+
+                entity.Property(e => e.ModelYear)
+                    .HasColumnName("model_year");
+
+                entity.Property(e => e.ListPrice)
+                    .HasColumnName("list_price");
+
+                entity.Property(e => e.ProductName)
+                    .HasColumnName("product_name");
+            });
         }
     }
 
@@ -73,8 +86,8 @@ namespace SqlServerTutorial {
                     Console.WriteLine("Not runnable snippet");
                     return;
                 }
-                
-                var type = typeof(Advanced.ScalarUDF);
+
+                var type = typeof(Advanced.TableUDF);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
