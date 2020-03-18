@@ -57,9 +57,9 @@ namespace SqlServerTutorial {
         public int OrdersPlaced { get; set; }
     }
     
-    public class OrderNetValue {
+    public class OrderNetSale {
         public Orders Order { get; set; }
-        public decimal Value { get; set; }
+        public decimal NetSale { get; set; }
     }
     
     public class SalesSummaryByYear {

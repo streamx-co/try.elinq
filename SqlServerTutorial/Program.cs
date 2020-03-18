@@ -41,12 +41,13 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<ProductCategoryBrandPrice>(entity => entity.HasNoKey());
             modelBuilder.Entity<CustomerYear>(entity => entity.HasNoKey());
             modelBuilder.Entity<CustomerYearOrders>(entity => entity.HasNoKey());
-            modelBuilder.Entity<OrderNetValue>(entity => entity.HasNoKey());
+            modelBuilder.Entity<OrderNetSale>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesSummaryByYear>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesSummary>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesGrouping>(entity => entity.HasNoKey());
             modelBuilder.Entity<Scalar<int>>(entity => entity.HasNoKey());
             modelBuilder.Entity<Scalar<String>>(entity => entity.HasNoKey());
+            modelBuilder.Entity<Scalar<decimal>>(entity => entity.HasNoKey());
             modelBuilder.Entity<OrderMaxListPrice>(entity => entity.HasNoKey());
             modelBuilder.Entity<StaffSales>(entity => entity.HasNoKey());
             modelBuilder.Entity<CTECategoryCounts>(entity => entity.HasNoKey());
@@ -67,7 +68,13 @@ namespace SqlServerTutorial {
             if (region != null && session != null)
                 ExecuteSingleExample(session, region);
             else {
-                var type = typeof(Basic.InsertMulti);
+
+                if (region != null) {
+                    Console.WriteLine("Not runnable snippet");
+                    return;
+                }
+                
+                var type = typeof(Advanced.ScalarUDF);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()

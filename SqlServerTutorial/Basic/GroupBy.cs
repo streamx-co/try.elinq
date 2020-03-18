@@ -101,11 +101,11 @@ namespace SqlServerTutorial.Basic {
         public void T4() {
 
             #region T4
-            var query = DbContext.Set<OrderNetValue>()
-                .Query((OrderItems orderItems, OrderNetValue alias) => {
+            var query = DbContext.Set<OrderNetSale>()
+                .Query((OrderItems orderItems, OrderNetSale alias) => {
                     var sum = SUM(orderItems.Quantity * orderItems.ListPrice * (1 - orderItems.Discount));
 
-                    var result = SELECT<OrderNetValue>(orderItems.OrderId.@as(alias.Order.OrderId), sum.@as(alias.Value));
+                    var result = SELECT<OrderNetSale>(orderItems.OrderId.@as(alias.Order.OrderId), sum.@as(alias.NetSale));
                     FROM(orderItems);
                     GROUP(BY(orderItems.OrderId));
 
@@ -114,7 +114,7 @@ namespace SqlServerTutorial.Basic {
                 .Include(c => c.Order);
 
             foreach (var orderNetValue in query.Take(3))
-                Console.WriteLine((orderNetValue.Order.OrderId, orderNetValue.Value));
+                Console.WriteLine((orderNetValue.Order.OrderId, orderNetValue.NetSale));
             #endregion
 
         }
