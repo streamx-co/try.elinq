@@ -119,4 +119,9 @@ namespace SqlServerTutorial {
         public short ModelYear { get; set; }
         public decimal ListPrice { get; set; }
     }
+    
+    public class GrossSalesByDay {
+        public int Day { get; set; }
+        public decimal GrossSales { get; set; }
+    }
 }

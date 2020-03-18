@@ -52,6 +52,7 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<StaffSales>(entity => entity.HasNoKey());
             modelBuilder.Entity<CTECategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<CategoryCounts>(entity => entity.HasNoKey());
+            modelBuilder.Entity<GrossSalesByDay>(entity => entity.HasNoKey());
             modelBuilder.Entity<ProductInYear>(entity => {
 
                 entity.HasNoKey();
@@ -87,7 +88,7 @@ namespace SqlServerTutorial {
                     return;
                 }
 
-                var type = typeof(Advanced.TableUDF);
+                var type = typeof(Functions.Day);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
