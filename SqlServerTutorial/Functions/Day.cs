@@ -18,12 +18,12 @@ namespace SqlServerTutorial.Functions {
             DbContext = context;
         }
 
-        #region CalcAveragePrice
-        public void CalcAveragePrice() {
+        public void CalcGrossSalesByDay() {
 
+            #region CalcGrossSalesByDay
             var year = 2017;
             var month = 2;
-            
+
             var query = DbContext.Set<GrossSalesByDay>()
                 .Query((Orders orders, OrderItems orderItems, GrossSalesByDay alias) => {
                     var grossSales = SUM(orderItems.ListPrice * orderItems.Quantity);
@@ -35,16 +35,17 @@ namespace SqlServerTutorial.Functions {
                     FROM(orders).JOIN(orderItems).ON(orderItems.Order == orders);
                     WHERE(orders.ShippedDate != null &&
                           orders.ShippedDate?.Year == year &&
-                          orders.ShippedDate?.Month == month);
+                          MONTH(orders.ShippedDate) == month);
                     GROUP(BY(shippedDay));
 
                     return r;
                 })
                 .OrderBy(gs => gs.Day);
 
-            foreach (var orderNetValue in query.Take(3))
-                Console.WriteLine((orderNetValue.Day, orderNetValue.GrossSales));
+            foreach (var grossSalesByDay in query.Take(3))
+                Console.WriteLine((grossSalesByDay.Day, grossSalesByDay.GrossSales));
+            #endregion
+
         }
-        #endregion
     }
 }

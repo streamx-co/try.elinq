@@ -124,4 +124,17 @@ namespace SqlServerTutorial {
         public int Day { get; set; }
         public decimal GrossSales { get; set; }
     }
+    
+    public class VwNetSalesWithNext {
+        public int? Month { get; set; }
+        public decimal? NetSales { get; set; }
+        public decimal? NextNetSales { get; set; }
+    }
+
+    public class VwNetSalesBrandsWithNext {
+        public string BrandName { get; set; }
+        public int? Month { get; set; }
+        public decimal? NetSales { get; set; }
+        public decimal? NextNetSales { get; set; }
+    }
 }

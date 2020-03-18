@@ -53,6 +53,8 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<CTECategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<CategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<GrossSalesByDay>(entity => entity.HasNoKey());
+            modelBuilder.Entity<VwNetSalesWithNext>(entity => entity.HasNoKey());
+            modelBuilder.Entity<VwNetSalesBrandsWithNext>(entity => entity.HasNoKey());
             modelBuilder.Entity<ProductInYear>(entity => {
 
                 entity.HasNoKey();
@@ -88,7 +90,7 @@ namespace SqlServerTutorial {
                     return;
                 }
 
-                var type = typeof(Functions.Day);
+                var type = typeof(Functions.Window.Lead);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()

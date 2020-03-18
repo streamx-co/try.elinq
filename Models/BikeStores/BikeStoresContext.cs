@@ -30,6 +30,7 @@ namespace Models.BikeStores
         public virtual DbSet<Stores> Stores { get; set; }
         public virtual DbSet<Targets> Targets { get; set; }
         public virtual DbSet<Taxes> Taxes { get; set; }
+        public virtual DbSet<VwNetsalesBrands> VwNetsalesBrands { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -525,6 +526,27 @@ namespace Models.BikeStores
                 entity.Property(e => e.UpdatedAt)
                     .HasColumnName("updated_at")
                     .HasColumnType("datetime");
+            });
+            
+            modelBuilder.Entity<VwNetsalesBrands>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vw_netsales_brands", "sales");
+
+                entity.Property(e => e.BrandName)
+                    .IsRequired()
+                    .HasColumnName("brand_name")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Month).HasColumnName("month");
+
+                entity.Property(e => e.NetSales)
+                    .HasColumnName("net_sales")
+                    .HasColumnType("decimal(10, 0)");
+
+                entity.Property(e => e.Year).HasColumnName("year");
             });
 
             OnModelCreatingPartial(modelBuilder);
