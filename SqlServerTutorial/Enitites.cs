@@ -137,4 +137,11 @@ namespace SqlServerTutorial {
         public decimal? NetSales { get; set; }
         public decimal? NextNetSales { get; set; }
     }
+    
+    public class StaffSalesPercentile {
+        public String FullName { get; set; }
+        public decimal NetSales { get; set; }
+        public int Year { get; set; }
+        public double Percentile { get; set; }
+    }
 }

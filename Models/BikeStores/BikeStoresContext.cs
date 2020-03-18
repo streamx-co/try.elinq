@@ -30,7 +30,10 @@ namespace Models.BikeStores
         public virtual DbSet<Stores> Stores { get; set; }
         public virtual DbSet<Targets> Targets { get; set; }
         public virtual DbSet<Taxes> Taxes { get; set; }
+        public virtual DbSet<VwCategorySalesVolume> VwCategorySalesVolume { get; set; }
+        public virtual DbSet<VwNetsales2017> VwNetsales2017 { get; set; }
         public virtual DbSet<VwNetsalesBrands> VwNetsalesBrands { get; set; }
+        public virtual DbSet<VwStaffSales> VwStaffSales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -528,6 +531,44 @@ namespace Models.BikeStores
                     .HasColumnType("datetime");
             });
             
+            modelBuilder.Entity<VwCategorySalesVolume>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vw_category_sales_volume", "sales");
+
+                entity.Property(e => e.CategoryName)
+                    .IsRequired()
+                    .HasColumnName("category_name")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Qty).HasColumnName("qty");
+
+                entity.Property(e => e.Year).HasColumnName("year");
+            });
+
+            modelBuilder.Entity<VwNetsales2017>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vw_netsales_2017", "sales");
+
+                entity.Property(e => e.CategoryName)
+                    .IsRequired()
+                    .HasColumnName("category_name")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Month)
+                    .HasColumnName("month")
+                    .HasMaxLength(30);
+
+                entity.Property(e => e.NetSales)
+                    .HasColumnName("net_sales")
+                    .HasColumnType("decimal(10, 0)");
+            });
+
             modelBuilder.Entity<VwNetsalesBrands>(entity =>
             {
                 entity.HasNoKey();
@@ -545,6 +586,21 @@ namespace Models.BikeStores
                 entity.Property(e => e.NetSales)
                     .HasColumnName("net_sales")
                     .HasColumnType("decimal(10, 0)");
+
+                entity.Property(e => e.Year).HasColumnName("year");
+            });
+
+            modelBuilder.Entity<VwStaffSales>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vw_staff_sales", "sales");
+
+                entity.Property(e => e.NetSales)
+                    .HasColumnName("net_sales")
+                    .HasColumnType("decimal(38, 4)");
+
+                entity.Property(e => e.StaffId).HasColumnName("staff_id");
 
                 entity.Property(e => e.Year).HasColumnName("year");
             });
