@@ -24,7 +24,7 @@ namespace SqlServerTutorial.Functions.Window {
             var query = DbContext.Set<SalesVolume>()
                 .Query((VwCategorySalesVolume salesVolume, SalesVolume alias) => {
 
-                    var highestSalesVolume = AggregateBy(FIRST_VALUE(salesVolume.CategoryName))
+                    var lowestSalesVolume = AggregateBy(FIRST_VALUE(salesVolume.CategoryName))
                         .OVER(ORDER(BY(salesVolume.Qty))
                             .RANGE()
                             .BETWEEN(FrameBounds.UNBOUNDED_PRECEDING)
@@ -33,7 +33,7 @@ namespace SqlServerTutorial.Functions.Window {
                     var r = SELECT<SalesVolume>(salesVolume.CategoryName.@as(alias.CategoryName),
                         salesVolume.Year.@as(alias.Year),
                         salesVolume.Qty.@as(alias.Quantity),
-                        highestSalesVolume.@as(alias.VolumeCategory));
+                        lowestSalesVolume.@as(alias.VolumeCategory));
                     FROM(salesVolume);
                     WHERE(salesVolume.Year == year);
 
@@ -54,7 +54,7 @@ namespace SqlServerTutorial.Functions.Window {
             var query = DbContext.Set<SalesVolume>()
                 .Query((VwCategorySalesVolume salesVolume, SalesVolume alias) => {
 
-                    var highestSalesVolume = AggregateBy(FIRST_VALUE(salesVolume.CategoryName))
+                    var lowestSalesVolume = AggregateBy(FIRST_VALUE(salesVolume.CategoryName))
                         .OVER(PARTITION(BY(salesVolume.Year))
                             .ORDER(BY(salesVolume.Qty))
                             .RANGE()
@@ -64,7 +64,7 @@ namespace SqlServerTutorial.Functions.Window {
                     var r = SELECT<SalesVolume>(salesVolume.CategoryName.@as(alias.CategoryName),
                         salesVolume.Year.@as(alias.Year),
                         salesVolume.Qty.@as(alias.Quantity),
-                        highestSalesVolume.@as(alias.VolumeCategory));
+                        lowestSalesVolume.@as(alias.VolumeCategory));
                     FROM(salesVolume);
                     WHERE(years.Contains(salesVolume.Year));
 

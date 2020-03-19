@@ -54,7 +54,7 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<CategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<GrossSalesByDay>(entity => entity.HasNoKey());
             modelBuilder.Entity<VwNetSalesWithNext>(entity => entity.HasNoKey());
-            modelBuilder.Entity<VwNetSalesBrandsWithNext>(entity => entity.HasNoKey());
+            modelBuilder.Entity<VwNetSalesBrandsCompare>(entity => entity.HasNoKey());
             modelBuilder.Entity<StaffSalesPercentile>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesVolume>(entity => entity.HasNoKey());
             modelBuilder.Entity<ProductInYear>(entity => {
@@ -92,7 +92,7 @@ namespace SqlServerTutorial {
                     return;
                 }
 
-                var type = typeof(Functions.Window.FirstValue);
+                var type = typeof(Functions.Window.Lag);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()

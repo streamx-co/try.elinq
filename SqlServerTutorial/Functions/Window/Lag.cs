@@ -8,10 +8,10 @@ using static Streamx.Linq.SQL.Directives;
 using static Streamx.Linq.SQL.AggregateFunctions;
 
 namespace SqlServerTutorial.Functions.Window {
-    class Lead {
+    class Lag {
         private MyContext DbContext { get; }
 
-        public Lead(MyContext context) {
+        public Lag(MyContext context) {
             DbContext = context;
         }
 
@@ -34,12 +34,12 @@ namespace SqlServerTutorial.Functions.Window {
 
                     WITH(yearSales);
 
-                    var nextMonthSales = AggregateBy(LEAD(yearSales.NetSales, 1))
+                    var prevMonthSales = AggregateBy(LAG(yearSales.NetSales, 1))
                         .OVER(ORDER(BY(yearSales.Month)));
 
                     var r = SELECT<VwNetSalesWithNext>(yearSales.Month.@as(alias.Month),
                         yearSales.NetSales.@as(alias.NetSales),
-                        nextMonthSales.@as(alias.NextNetSales));
+                        prevMonthSales.@as(alias.NextNetSales));
                     FROM(yearSales);
 
                     return r;
@@ -60,13 +60,13 @@ namespace SqlServerTutorial.Functions.Window {
             var query = DbContext.Set<VwNetSalesBrandsCompare>()
                 .Query((VwNetsalesBrands sales, VwNetSalesBrandsCompare alias) => {
 
-                    var nextMonthSales = AggregateBy(LEAD(sales.NetSales, 1))
+                    var prevMonthSales = AggregateBy(LAG(sales.NetSales, 1))
                         .OVER(PARTITION(BY(sales.BrandName)).ORDER(BY(sales.Month)));
 
                     var r = SELECT<VwNetSalesBrandsCompare>(sales.Month.@as(alias.Month),
                         sales.BrandName.@as(alias.BrandName),
                         sales.NetSales.@as(alias.NetSales),
-                        nextMonthSales.@as(alias.SecondNetSales));
+                        prevMonthSales.@as(alias.SecondNetSales));
                     FROM(sales);
                     WHERE(sales.Year == year);
 

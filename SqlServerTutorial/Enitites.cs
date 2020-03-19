@@ -130,11 +130,11 @@ namespace SqlServerTutorial {
         public decimal? NextNetSales { get; set; }
     }
 
-    public class VwNetSalesBrandsWithNext {
+    public class VwNetSalesBrandsCompare {
         public string BrandName { get; set; }
         public int? Month { get; set; }
         public decimal? NetSales { get; set; }
-        public decimal? NextNetSales { get; set; }
+        public decimal? SecondNetSales { get; set; }
     }
 
     public class StaffSalesPercentile {
