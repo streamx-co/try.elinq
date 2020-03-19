@@ -56,6 +56,7 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<VwNetSalesBrandsCompare>(entity => entity.HasNoKey());
             modelBuilder.Entity<StaffSalesPercentile>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesVolume>(entity => entity.HasNoKey());
+            modelBuilder.Entity<ProductRank>(entity => entity.HasNoKey());
             modelBuilder.Entity<ProductInYear>(entity => {
 
                 entity.HasNoKey();
@@ -91,10 +92,10 @@ namespace SqlServerTutorial {
                     return;
                 }
 
-                var type = typeof(Functions.Window.Lag);
+                var type = typeof(Functions.Window.Rank);
                 ExecuteAllExamples(type);
 
-                var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
+                /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
                     from cat in Categories
                     let ns = RootNamespace + "." + cat
                     where t.Namespace == ns && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
@@ -103,7 +104,7 @@ namespace SqlServerTutorial {
                 foreach (var t in toExecute)
                     ExecuteAllExamples(t);
                 
-                Console.WriteLine($"{counter} examples executed");
+                Console.WriteLine($"{counter} examples executed");*/
             }
         }
 

@@ -144,4 +144,9 @@ namespace SqlServerTutorial {
         public int Quantity { get; set; }
         public String VolumeCategory { get; set; }
     }
+
+    public class ProductRank {
+        public Products Product { get; set; }
+        public long Rank { get; set; }
+    }
 }
