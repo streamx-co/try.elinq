@@ -23,7 +23,7 @@ namespace SqlServerTutorial {
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
             optionsBuilder.UseSqlServer("Server=localhost;Database=BikeStores;User Id=sa;Password=455Password");
 
-            ExLINQ.Configuration.RegisterVendorCapabilities();
+            XLinq.Configuration.RegisterVendorCapabilities();
 
             base.OnConfiguring(optionsBuilder);
         }
@@ -76,7 +76,7 @@ namespace SqlServerTutorial {
 
     class Program {
         private static readonly String RootNamespace = typeof(Program).Namespace;
-        private static readonly String[] Categories = {"Basic"};
+        private static readonly String[] Categories = {"Advanced", "Basic", "Functions", "Functions.Window"};
 
         public static void Main(string region = null,
             string session = null,
@@ -96,7 +96,7 @@ namespace SqlServerTutorial {
                 var type = typeof(Functions.Window.RowNumber);
                 ExecuteAllExamples(type);
 
-                /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
+                var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
                     from cat in Categories
                     let ns = RootNamespace + "." + cat
                     where t.Namespace == ns && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
@@ -105,7 +105,7 @@ namespace SqlServerTutorial {
                 foreach (var t in toExecute)
                     ExecuteAllExamples(t);
                 
-                Console.WriteLine($"{counter} examples executed");*/
+                Console.WriteLine($"{counter} examples executed");
             }
         }
 
