@@ -66,7 +66,7 @@ namespace SqlServerTutorial.Basic {
             var query = DbContext.Set<Scalar<int>>()
                 .Query((Scalar<int> alias) => {
 
-                    var cte_sales = SubQuery((Orders order) => {
+                    var cteSales = SubQuery((Orders order) => {
                         var count = SELECT<Scalar<int>>(COUNT().@as(alias.Value));
                         FROM(order);
                         WHERE(order.OrderDate.Year == year);
@@ -74,10 +74,10 @@ namespace SqlServerTutorial.Basic {
                         return count;
                     });
 
-                    WITH(cte_sales);
+                    WITH(cteSales);
 
-                    var r = SELECT<Scalar<int>>(AVG(cte_sales.Value).@as(alias.Value));
-                    FROM(cte_sales);
+                    var r = SELECT<Scalar<int>>(AVG(cteSales.Value).@as(alias.Value));
+                    FROM(cteSales);
                     return r;
                 })
                 .AsEnumerable();
