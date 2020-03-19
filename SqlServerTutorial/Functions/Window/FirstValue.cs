@@ -9,10 +9,10 @@ using static Streamx.Linq.SQL.ScalarFunctions;
 using static Streamx.Linq.SQL.AggregateFunctions;
 
 namespace SqlServerTutorial.Functions.Window {
-    class LastValue {
+    class FirstValue {
         private MyContext DbContext { get; }
 
-        public LastValue(MyContext context) {
+        public FirstValue(MyContext context) {
             DbContext = context;
         }
 
@@ -24,7 +24,7 @@ namespace SqlServerTutorial.Functions.Window {
             var query = DbContext.Set<SalesVolume>()
                 .Query((VwCategorySalesVolume salesVolume, SalesVolume alias) => {
 
-                    var highestSalesVolume = AggregateBy(LAST_VALUE(salesVolume.CategoryName))
+                    var highestSalesVolume = AggregateBy(FIRST_VALUE(salesVolume.CategoryName))
                         .OVER(ORDER(BY(salesVolume.Qty))
                             .RANGE()
                             .BETWEEN(FrameBounds.UNBOUNDED_PRECEDING)
@@ -54,7 +54,7 @@ namespace SqlServerTutorial.Functions.Window {
             var query = DbContext.Set<SalesVolume>()
                 .Query((VwCategorySalesVolume salesVolume, SalesVolume alias) => {
 
-                    var highestSalesVolume = AggregateBy(LAST_VALUE(salesVolume.CategoryName))
+                    var highestSalesVolume = AggregateBy(FIRST_VALUE(salesVolume.CategoryName))
                         .OVER(PARTITION(BY(salesVolume.Year))
                             .ORDER(BY(salesVolume.Qty))
                             .RANGE()

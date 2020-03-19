@@ -144,10 +144,10 @@ namespace SqlServerTutorial {
         public double Percentile { get; set; }
     }
 
-    public class HighestSalesVolume {
+    public class SalesVolume {
         public String CategoryName { get; set; }
         public int Year { get; set; }
         public int Quantity { get; set; }
-        public String HighestCategory { get; set; }
+        public String VolumeCategory { get; set; }
     }
 }
