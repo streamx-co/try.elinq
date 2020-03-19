@@ -149,4 +149,9 @@ namespace SqlServerTutorial {
         public Products Product { get; set; }
         public long Rank { get; set; }
     }
+    
+    public class CustomerOrder {
+        public Customers Customer { get; set; }
+        public long RowNumber { get; set; }
+    }
 }

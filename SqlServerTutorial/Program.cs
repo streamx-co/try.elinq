@@ -57,6 +57,7 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<StaffSalesPercentile>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesVolume>(entity => entity.HasNoKey());
             modelBuilder.Entity<ProductRank>(entity => entity.HasNoKey());
+            modelBuilder.Entity<CustomerOrder>(entity => entity.HasNoKey());
             modelBuilder.Entity<ProductInYear>(entity => {
 
                 entity.HasNoKey();
@@ -92,7 +93,7 @@ namespace SqlServerTutorial {
                     return;
                 }
 
-                var type = typeof(Functions.Window.Rank);
+                var type = typeof(Functions.Window.RowNumber);
                 ExecuteAllExamples(type);
 
                 /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
