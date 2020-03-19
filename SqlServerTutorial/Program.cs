@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -82,56 +82,55 @@ namespace SqlServerTutorial {
             string session = null,
             string package = null,
             string project = null,
-            string[] args = null) {
+            string sourceFile = null) {
 
-            if (region != null && session != null)
-                ExecuteSingleExample(session, region);
+            if (sourceFile != null)
+                ExecuteSingleExample(region, sourceFile);
             else {
 
-                if (region != null) {
-                    Console.WriteLine("Not runnable snippet");
-                    return;
-                }
-
-                var type = typeof(Functions.Window.RowNumber);
-                ExecuteAllExamples(type);
+                var target = typeof(Functions.Window.RowNumber);
+                ExecuteAllExamples(target);
 
                 var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
                     from cat in Categories
                     let ns = RootNamespace + "." + cat
                     where t.Namespace == ns && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
                     select t;
-                
+
                 foreach (var t in toExecute)
                     ExecuteAllExamples(t);
-                
+
                 Console.WriteLine($"{counter} examples executed");
             }
         }
 
         static int counter = 0;
+
         private static void ExecuteAllExamples(Type type) {
-            
+
             foreach (var method in type.GetMethods()) {
                 if (!method.IsStatic && method.GetParameters().Length == 0) {
                     // ReSharper disable once PossibleNullReferenceException
-                    ExecuteSingleExample(method.Name, type.FullName.Substring(RootNamespace.Length + 1));
+                    ExecuteSingleExample(method.Name, type);
 
                     counter++;
                 }
             }
         }
 
-        private static void ExecuteSingleExample(string region, string session) {
+        private static void ExecuteSingleExample(string methodName, Type type) {
             using var context = new MyContext();
             using var t = context.Database.BeginTransaction();
 
-            var type = Type.GetType(RootNamespace + "." + session);
-            // ReSharper disable once AssignNullToNotNullAttribute
             var queries = Activator.CreateInstance(type, context);
 
             // ReSharper disable once PossibleNullReferenceException
-            queries.GetType().GetMethod(region).Invoke(queries, null);
+            queries.GetType().GetMethod(methodName).Invoke(queries, null);
+        }
+
+        private static void ExecuteSingleExample(string methodName, string sourceFile) {
+            var start = sourceFile.IndexOf(RootNamespace, StringComparison.Ordinal);
+            ExecuteSingleExample(methodName, Type.GetType(sourceFile.Substring(start, sourceFile.Length - start - 3).Replace('/', '.')));
         }
     }
 }
