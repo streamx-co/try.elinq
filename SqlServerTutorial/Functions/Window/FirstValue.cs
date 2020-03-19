@@ -41,7 +41,7 @@ namespace SqlServerTutorial.Functions.Window {
                 });
 
             foreach (var salesVolume in query)
-                Console.WriteLine((salesVolume.CategoryName, salesVolume.Year, salesVolume.Quantity, salesVolume.VolumeCategory));
+                Console.WriteLine((salesVolume.Year, salesVolume.CategoryName, salesVolume.Quantity, salesVolume.VolumeCategory));
             #endregion
 
         }
@@ -72,7 +72,7 @@ namespace SqlServerTutorial.Functions.Window {
                 });
 
             foreach (var salesVolume in query)
-                Console.WriteLine((salesVolume.CategoryName, salesVolume.Year, salesVolume.Quantity, salesVolume.VolumeCategory));
+                Console.WriteLine((salesVolume.Year, salesVolume.CategoryName, salesVolume.Quantity, salesVolume.VolumeCategory));
             #endregion
 
         }

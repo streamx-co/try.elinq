@@ -9,10 +9,10 @@ using static Streamx.Linq.SQL.ScalarFunctions;
 using static Streamx.Linq.SQL.AggregateFunctions;
 
 namespace SqlServerTutorial.Functions.Window {
-    class CumeDist {
+    class PercentRank {
         private MyContext DbContext { get; }
 
-        public CumeDist(MyContext context) {
+        public PercentRank(MyContext context) {
             DbContext = context;
         }
         
@@ -25,7 +25,7 @@ namespace SqlServerTutorial.Functions.Window {
                 .Query((VwStaffSales sales, Staffs staffs, StaffSalesPercentile alias) => {
 
                     var fullName = CONCAT_WS(" ", staffs.FirstName, staffs.LastName);
-                    var cumeDist = AggregateBy(CUME_DIST())
+                    var cumeDist = AggregateBy(PERCENT_RANK())
                         .OVER(ORDER(BY(sales.NetSales).DESC));
 
                     var r = SELECT<StaffSalesPercentile>(fullName.@as(alias.FullName),
@@ -53,7 +53,7 @@ namespace SqlServerTutorial.Functions.Window {
                 .Query((VwStaffSales sales, Staffs staffs, StaffSalesPercentile alias) => {
 
                     var fullName = CONCAT_WS(" ", staffs.FirstName, staffs.LastName);
-                    var cumeDist = AggregateBy(CUME_DIST())
+                    var cumeDist = AggregateBy(PERCENT_RANK())
                         .OVER(PARTITION(BY(sales.Year))
                             .ORDER(BY(sales.NetSales).DESC));
 

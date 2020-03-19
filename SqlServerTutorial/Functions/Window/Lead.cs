@@ -20,8 +20,8 @@ namespace SqlServerTutorial.Functions.Window {
             #region A
             var year = 2017;
 
-            var query = DbContext.Set<VwNetSalesWithNext>()
-                .Query((VwNetSalesWithNext alias) => {
+            var query = DbContext.Set<VwNetSalesBrandsCompare>()
+                .Query((VwNetSalesBrandsCompare alias) => {
 
                     var yearSales = SubQuery((VwNetsalesBrands sales) => {
                         var r = SELECT<VwNetsalesBrands>(sales.Month.@as(), SUM(sales.NetSales).@as(sales.NetSales));
@@ -37,9 +37,10 @@ namespace SqlServerTutorial.Functions.Window {
                     var nextMonthSales = AggregateBy(LEAD(yearSales.NetSales, 1))
                         .OVER(ORDER(BY(yearSales.Month)));
 
-                    var r = SELECT<VwNetSalesWithNext>(yearSales.Month.@as(alias.Month),
+                    var r = SELECT<VwNetSalesBrandsCompare>("".@as(alias.BrandName),
+                        yearSales.Month.@as(alias.Month),
                         yearSales.NetSales.@as(alias.NetSales),
-                        nextMonthSales.@as(alias.NextNetSales));
+                        nextMonthSales.@as(alias.SecondNetSales));
                     FROM(yearSales);
 
                     return r;
@@ -47,7 +48,7 @@ namespace SqlServerTutorial.Functions.Window {
                 .AsEnumerable();
 
             foreach (var salesByMonth in query.Take(5))
-                Console.WriteLine((salesByMonth.Month, salesByMonth.NetSales, salesByMonth.NextNetSales));
+                Console.WriteLine((salesByMonth.Month, salesByMonth.NetSales, salesByMonth.SecondNetSales));
             #endregion
 
         }
@@ -74,7 +75,7 @@ namespace SqlServerTutorial.Functions.Window {
                 });
 
             foreach (var salesByMonth in query.Take(5))
-                Console.WriteLine((salesByMonth.Month, salesByMonth.BrandName, salesByMonth.NetSales, salesByMonth.SecondNetSales));
+                Console.WriteLine((salesByMonth.BrandName, salesByMonth.Month, salesByMonth.NetSales, salesByMonth.SecondNetSales));
             #endregion
 
         }

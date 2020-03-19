@@ -53,7 +53,6 @@ namespace SqlServerTutorial {
             modelBuilder.Entity<CTECategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<CategoryCounts>(entity => entity.HasNoKey());
             modelBuilder.Entity<GrossSalesByDay>(entity => entity.HasNoKey());
-            modelBuilder.Entity<VwNetSalesWithNext>(entity => entity.HasNoKey());
             modelBuilder.Entity<VwNetSalesBrandsCompare>(entity => entity.HasNoKey());
             modelBuilder.Entity<StaffSalesPercentile>(entity => entity.HasNoKey());
             modelBuilder.Entity<SalesVolume>(entity => entity.HasNoKey());
@@ -95,22 +94,29 @@ namespace SqlServerTutorial {
                 var type = typeof(Functions.Window.Lag);
                 ExecuteAllExamples(type);
 
-                /*var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
+                var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
                     from cat in Categories
                     let ns = RootNamespace + "." + cat
                     where t.Namespace == ns && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
                     select t;
                 
                 foreach (var t in toExecute)
-                    ExecuteAllExamples(t);*/
+                    ExecuteAllExamples(t);
+                
+                Console.WriteLine($"{counter} examples executed");
             }
         }
 
+        static int counter = 0;
         private static void ExecuteAllExamples(Type type) {
+            
             foreach (var method in type.GetMethods()) {
-                if (!method.IsStatic && method.GetParameters().Length == 0)
+                if (!method.IsStatic && method.GetParameters().Length == 0) {
                     // ReSharper disable once PossibleNullReferenceException
                     ExecuteSingleExample(method.Name, type.FullName.Substring(RootNamespace.Length + 1));
+
+                    counter++;
+                }
             }
         }
 
