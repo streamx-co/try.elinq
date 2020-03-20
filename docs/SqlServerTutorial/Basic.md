@@ -2,7 +2,7 @@
 
 We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".
 
-> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that it's impossible to handle the complex case without handling the simple one.
+> Disclaimer: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that it's impossible to handle the complex case without handling the simple one.
 > 
 > So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how XLinq works.
 
@@ -54,3 +54,12 @@ We suggest to open the corresponding [tutorial page](https://www.sqlservertutori
 ### Section 10. Pivot
 
 - Not Supported <big>&#128533;</big>
+
+### Section 11. Modifying data
+
+- [INSERT](Insert.md)
+- [INSERT multiple rows](InsertMulti.md) (with _Batch Insert_ example)
+- [INSERT INTO SELECT](InsertSelect.md), (_Bulk Insert_)
+- [UPDATE](Update.md) (_Bulk Update_)
+- [UPDATE JOIN](UpdateJoin.md) (_Bulk Update_)
+- [DELETE](Delete.md) (_Bulk Delete_)
