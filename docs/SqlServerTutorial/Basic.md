@@ -1,8 +1,8 @@
 # SQL Server Basics
 
-We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".
+**We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".**
 
-> Disclaimer: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that it's impossible to handle the complex case without handling the simple one.
+> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that the advanced cases are built on patterns and practices of simple cases.
 > 
 > So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how XLinq works.
 
@@ -59,7 +59,12 @@ We suggest to open the corresponding [tutorial page](https://www.sqlservertutori
 
 - [INSERT](Insert.md)
 - [INSERT multiple rows](InsertMulti.md) (with _Batch Insert_ example)
-- [INSERT INTO SELECT](InsertSelect.md), (_Bulk Insert_)
+- [INSERT INTO SELECT](InsertSelect.md) (_Bulk Insert_)
 - [UPDATE](Update.md) (_Bulk Update_)
 - [UPDATE JOIN](UpdateJoin.md) (_Bulk Update_)
 - [DELETE](Delete.md) (_Bulk Delete_)
+- [MERGE](Merge.md) (_Upsert_)
+
+---
+
+[< BACK](SqlServerTutorial.md) | [HOME](/README.md)
