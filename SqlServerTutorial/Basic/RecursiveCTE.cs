@@ -20,23 +20,25 @@ namespace SqlServerTutorial.Basic {
             DbContext = context;
         }
 
+        #region Weekday
         [Tuple]
         class Weekday {
             public int N { get; }
             public String Name { get; }
         }
+        #endregion
 
-        void A() {
+        public void A() {
 
             #region A
             var query = DbContext.Set<Scalar<String>>()
                 .Query((Scalar<String> alias) => {
-
                     var weekday = SubQuery((Weekday alias) => {
                         var r = SELECT<Weekday>(0.@as(alias.N), DATENAME(DatePart.WEEKDAY, 0).@as(alias.Name));
 
                         UNION_ALL();
 
+                        // Like in Enumerator, get the "current" object
                         var current = r.Current();
                         var n = current.N;
 
@@ -65,7 +67,6 @@ namespace SqlServerTutorial.Basic {
 
             #region B
             var query = DbContext.Staffs.Query(() => {
-
                 var org = SubQuery((Staffs topManagers, Staffs employee) => {
                     var r = SELECT(topManagers);
                     FROM(topManagers);

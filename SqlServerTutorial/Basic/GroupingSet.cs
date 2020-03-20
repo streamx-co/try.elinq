@@ -17,13 +17,13 @@ namespace SqlServerTutorial.Basic {
             DbContext = context;
         }
 
+
         public void SalesSummary() {
 
             #region SalesSummary
-            var sales_summary = "#sales_summary";
-
+            const String SALES_SUMMARY = "#sales_summary";
             DbContext.Database.Query((OrderItems i, Products p, Brands b, Categories c) => {
-                var salesSummary = ToTable<SalesSummaryByYear>(sales_summary);
+                var salesSummary = ToTable<SalesSummaryByYear>(SALES_SUMMARY);
 
                 SELECT<SalesSummaryByYear>(b.BrandName.@as(salesSummary.Brand),
                         c.CategoryName.@as(salesSummary.Category),
@@ -36,7 +36,7 @@ namespace SqlServerTutorial.Basic {
 
             var query = DbContext.Set<SalesSummaryByYear>()
                 .Query(() => {
-                    var salesSummary = ToTable<SalesSummaryByYear>(sales_summary);
+                    var salesSummary = ToTable<SalesSummaryByYear>(SALES_SUMMARY);
 
                     var result = SELECT(salesSummary);
                     FROM(salesSummary);
@@ -53,7 +53,7 @@ namespace SqlServerTutorial.Basic {
 
         }
 
-        #region SalesSummary1
+        #region SetupSalesSummaryTest
         private static SalesSummaryByYear GetSalesSummaryTable() {
             return SubQuery((OrderItems i, Products p, Brands b, Categories c, SalesSummaryByYear alias) => {
                 var r = SELECT<SalesSummaryByYear>(b.BrandName.@as(alias.Brand),
@@ -68,7 +68,7 @@ namespace SqlServerTutorial.Basic {
         }
 
         // Don't change method name
-        public void SalesSummary1() {
+        public void SetupSalesSummaryTest() {
             var query = DbContext.Set<SalesSummaryByYear>()
                 .Query(() => SelectAll(GetSalesSummaryTable()))
                 .OrderBy(ss => ss.Brand)

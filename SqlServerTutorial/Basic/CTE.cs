@@ -18,19 +18,19 @@ namespace SqlServerTutorial.Basic {
             DbContext = context;
         }
 
+        #region SalesAmount
         [Tuple]
         class SalesAmount : StaffSales {
             public int Year { get; }
         }
+        #endregion
 
         public void A() {
 
             #region A
             var query = DbContext.Set<StaffSales>()
                 .Query((Products products) => {
-
                     var salesAmounts = SubQuery((Orders orders, OrderItems items, Staffs staffs, SalesAmount alias) => {
-
                         var sum = SUM(items.Quantity * items.ListPrice * (1 - items.Discount));
                         var fullName = $"{staffs.FirstName} {staffs.LastName}";
                         var year = orders.OrderDate.Year;

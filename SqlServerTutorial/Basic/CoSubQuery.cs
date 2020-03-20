@@ -18,7 +18,6 @@ namespace SqlServerTutorial.Basic {
 
             #region T1
             var query = DbContext.Products.Query((Products p1) => {
-
                     var highestPriceByCategory = SubQuery((Products p2) => {
                         var max = SELECT(MAX(p2.ListPrice));
                         FROM(p2);

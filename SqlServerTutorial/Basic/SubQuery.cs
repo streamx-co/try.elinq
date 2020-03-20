@@ -138,7 +138,6 @@ namespace SqlServerTutorial.Basic {
             #region T5
             var query = DbContext.Products
                 .Query((Products product) => {
-
                     var avgBrandPrices = SubQuery((Products product) => {
                         var avg = SELECT(AVG(product.ListPrice));
                         FROM(product);
@@ -242,15 +241,15 @@ namespace SqlServerTutorial.Basic {
             #region T9
             var query = DbContext.Set<Scalar<int>>()
                 .Query((Scalar<int> alias) => {
-                    var order_count_by_staff = SubQuery((Orders order) => {
+                    var orderCountByStaff = SubQuery((Orders order) => {
                         var count = SELECT<Scalar<int>>(COUNT().@as(alias.Value));
                         FROM(order);
                         GROUP(BY(order.StaffId));
                         return count;
                     });
 
-                    var r = SELECT<Scalar<int>>(AVG(order_count_by_staff.Value).@as(alias.Value));
-                    FROM(order_count_by_staff);
+                    var r = SELECT<Scalar<int>>(AVG(orderCountByStaff.Value).@as(alias.Value));
+                    FROM(orderCountByStaff);
                     return r;
                 });
 
