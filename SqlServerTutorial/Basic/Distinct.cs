@@ -70,10 +70,10 @@ namespace SqlServerTutorial.Basic {
 
             #region C1
             var query = DbContext.Set<CityStateZip>()
-                .Query((Customers customer, CityStateZip cityStateZip) => {
-                    var result = SELECT<CityStateZip>(customer.City.@as(cityStateZip.City),
-                        customer.State.@as(cityStateZip.State),
-                        customer.ZipCode.@as(cityStateZip.ZipCode));
+                .Query((Customers customer, CityStateZip alias) => {
+                    var result = SELECT<CityStateZip>(customer.City.@as(alias.City),
+                        customer.State.@as(alias.State),
+                        customer.ZipCode.@as(alias.ZipCode));
                     FROM(customer);
                     GROUP(BY(customer.City), BY(customer.State), BY(customer.ZipCode));
 
@@ -93,10 +93,10 @@ namespace SqlServerTutorial.Basic {
 
             #region C2
             var query = DbContext.Set<CityStateZip>()
-                .Query((Customers customer, CityStateZip cityStateZip) => {
-                    var result = SELECT(DISTINCT<CityStateZip>(customer.City.@as(cityStateZip.City),
-                        customer.State.@as(cityStateZip.State),
-                        customer.ZipCode.@as(cityStateZip.ZipCode)));
+                .Query((Customers customer, CityStateZip alias) => {
+                    var result = SELECT(DISTINCT<CityStateZip>(customer.City.@as(alias.City),
+                        customer.State.@as(alias.State),
+                        customer.ZipCode.@as(alias.ZipCode)));
                     FROM(customer);
 
                     return result;

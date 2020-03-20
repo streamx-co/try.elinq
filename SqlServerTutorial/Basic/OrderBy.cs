@@ -120,7 +120,7 @@ namespace SqlServerTutorial.Basic {
 
         public void F_1() {
 
-            #region F
+            #region F_1
             var query = DbContext.Customers.Query((Customers customer) => {
                     var result = SELECT(customer);
                     FROM(customer);

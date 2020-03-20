@@ -19,12 +19,12 @@ namespace SqlServerTutorial.Basic {
                 var result = SELECT(products);
                 FROM(products);
                 ORDER(BY(products.ListPrice), BY(products.ProductName));
-                OFFSET(10).ROWS();
+                OFFSET(10).ROWS().FETCH_NEXT(10).ROWS_ONLY();
 
                 return result;
             });
 
-            foreach (var product in query.Take(3))
+            foreach (var product in query)
                 Console.WriteLine((product.ProductName, product.ListPrice));
             #endregion
 
