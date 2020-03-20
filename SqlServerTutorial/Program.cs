@@ -91,10 +91,10 @@ namespace SqlServerTutorial {
                 var target = typeof(Functions.Window.RowNumber);
                 ExecuteAllExamples(target);
 
-                var toExecute = from t in Assembly.GetExecutingAssembly().GetTypes()
-                    from cat in Categories
-                    let ns = RootNamespace + "." + cat
-                    where t.Namespace == ns && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
+                var toExecute =
+                    from t in Assembly.GetExecutingAssembly().GetTypes()
+                    let ns = Categories.Select(cat => RootNamespace + "." + cat)
+                    where ns.Contains(t.Namespace) && !t.IsDefined(typeof(CompilerGeneratedAttribute)) && !t.IsNested
                     select t;
 
                 foreach (var t in toExecute)
@@ -104,33 +104,31 @@ namespace SqlServerTutorial {
             }
         }
 
-        static int counter = 0;
+        static int counter;
 
         private static void ExecuteAllExamples(Type type) {
 
-            foreach (var method in type.GetMethods()) {
-                if (!method.IsStatic && method.GetParameters().Length == 0) {
-                    // ReSharper disable once PossibleNullReferenceException
-                    ExecuteSingleExample(method.Name, type);
+            foreach (var method in type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public)) {
+                if (method.GetParameters().Length == 0) {
+                    ExecuteSingleExample(method, type);
 
                     counter++;
                 }
             }
         }
 
-        private static void ExecuteSingleExample(string methodName, Type type) {
+        private static void ExecuteSingleExample(MethodInfo method, Type type) {
             using var context = new MyContext();
-            using var t = context.Database.BeginTransaction();
-
             var queries = Activator.CreateInstance(type, context);
-
-            // ReSharper disable once PossibleNullReferenceException
-            queries.GetType().GetMethod(methodName).Invoke(queries, null);
+            
+            using var t = context.Database.BeginTransaction();
+            method.Invoke(queries, null);
         }
 
         private static void ExecuteSingleExample(string methodName, string sourceFile) {
             var start = sourceFile.IndexOf(RootNamespace, StringComparison.Ordinal);
-            ExecuteSingleExample(methodName, Type.GetType(sourceFile.Substring(start, sourceFile.Length - start - 3).Replace('/', '.')));
+            var type = Type.GetType(sourceFile.Substring(start, sourceFile.Length - start - 3).Replace('/', '.'));
+            ExecuteSingleExample(type?.GetMethod(methodName), type);
         }
     }
 }
