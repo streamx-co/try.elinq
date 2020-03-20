@@ -34,16 +34,18 @@ namespace SqlServerTutorial.Basic {
 
         }
 
+        #region newPromo
+        Promotions newPromo = new Promotions() {
+            PromotionName = "2018 Summer Promotion",
+            Discount = 0.15M,
+            StartDate = new DateTime(2018, 06, 01),
+            ExpiredDate = new DateTime(2018, 09, 01)
+        };
+        #endregion
+
         public void T1_1() {
 
             #region T1_1
-            var newPromo = new Promotions() {
-                PromotionName = "2018 Summer Promotion",
-                Discount = 0.15M,
-                StartDate = new DateTime(2018, 06, 01),
-                ExpiredDate = new DateTime(2018, 09, 01)
-            };
-
             var rows = DbContext.Database.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
                 INSERT().INTO(set);
@@ -51,8 +53,14 @@ namespace SqlServerTutorial.Basic {
             });
 
             Console.WriteLine($"{rows} rows affected");
+            #endregion
 
-            rows = DbContext.Database.Query((Promotions promo) => {
+        }
+
+        public void T1_2() {
+
+            #region T1_2
+            var rows = DbContext.Database.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.StartDate, promo.ExpiredDate, promo.Discount));
                 INSERT().INTO(set);
                 VALUES(set.RowFrom(newPromo, DEFAULT()));
@@ -66,13 +74,6 @@ namespace SqlServerTutorial.Basic {
         public void T2() {
 
             #region T2
-            var newPromo = new Promotions() {
-                PromotionName = "2018 Summer Promotion",
-                Discount = 0.15M,
-                StartDate = new DateTime(2018, 06, 01),
-                ExpiredDate = new DateTime(2018, 09, 01)
-            };
-
             var query = DbContext.Promotions.Query((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
                 INSERT().INTO(set);

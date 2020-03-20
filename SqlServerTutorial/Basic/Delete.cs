@@ -74,8 +74,8 @@ namespace SqlServerTutorial.Basic {
             #endregion
         }
 
+        #region Declarations
         private static void PrepareProductHistory(Products products) {
-
             var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
             SELECT(products).INTO(productHistory);
@@ -83,5 +83,6 @@ namespace SqlServerTutorial.Basic {
 
             Semicolon();
         }
+        #endregion
     }
 }
