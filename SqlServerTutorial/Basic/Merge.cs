@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Models.BikeStores;
 using Streamx.Linq.SQL.EFCore;
 using static Streamx.Linq.SQL.SQL;
@@ -20,32 +18,6 @@ namespace SqlServerTutorial.Basic {
         }
 
         public void T1() {
-
-            var cat1 = new Category() {
-                CategoryId = 1,
-                CategoryName = "Children Bicycles",
-                Amount = 15000,
-            };
-            var cat3 = new Category() {
-                CategoryId = 3,
-                CategoryName = "Cruisers Bicycles",
-                Amount = 13000,
-            };
-            var cat4 = new Category() {
-                CategoryId = 4,
-                CategoryName = "Cyclocross Bicycles",
-                Amount = 20000,
-            };
-            var cat5 = new Category() {
-                CategoryId = 5,
-                CategoryName = "Electric Bikes",
-                Amount = 10000,
-            };
-            var cat6 = new Category() {
-                CategoryId = 6,
-                CategoryName = "Mountain Bikes",
-                Amount = 10000,
-            };
 
             #region T1
             var stagingCategories = new List<Category> {cat1, cat3, cat4, cat5, cat6};
@@ -79,20 +51,53 @@ namespace SqlServerTutorial.Basic {
 
         }
 
-        private static void PrepareStagingCategories(Category category, IEnumerable<Category> stagingCategories) {
+        #region Declarations
+        readonly Category cat1 = new Category() {
+            CategoryId = 1,
+            CategoryName = "Children Bicycles",
+            Amount = 15000,
+        };
 
+        readonly Category cat3 = new Category() {
+            CategoryId = 3,
+            CategoryName = "Cruisers Bicycles",
+            Amount = 13000,
+        };
+
+        readonly Category cat4 = new Category() {
+            CategoryId = 4,
+            CategoryName = "Cyclocross Bicycles",
+            Amount = 20000,
+        };
+
+        readonly Category cat5 = new Category() {
+            CategoryId = 5,
+            CategoryName = "Electric Bikes",
+            Amount = 10000,
+        };
+
+        readonly Category cat6 = new Category() {
+            CategoryId = 6,
+            CategoryName = "Mountain Bikes",
+            Amount = 10000,
+        };
+
+        private static void PrepareStagingCategories(Category category, IEnumerable<Category> stagingCategories) {
             var staging = ToTable<Category>(CATEGORY_STAGING);
 
+            // create empty temporary table with Category's schema
             SELECT(TOP(0).Of(category)).INTO(staging);
             FROM(category);
 
             Semicolon();
 
+            // populate staging table with staging data
             var set = staging.@using((staging.CategoryId, staging.CategoryName, staging.Amount));
             INSERT().INTO(set);
             VALUES(set.RowsFrom(stagingCategories));
 
             Semicolon();
         }
+        #endregion
     }
 }
