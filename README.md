@@ -8,7 +8,7 @@ XLinq is a **L**anguage **IN**tegrated **Q**uery technology for relational (SQL)
 
 **"X"** prefix provides 2 new capabilities:
 
-- full language support: multiple statements inside lambda, variables, functions etc - use all language features for query creation.
+- full C# support: multiple statements inside lambda, variables, functions etc - use all language features for query creation.
 - no "special" syntax or [unexpected provider specific behavior](https://docs.microsoft.com/en-us/ef/core/querying/how-query-works/). XLinq declares SQL statements (like `SELECT`, `FROM`, `WHERE`) as first class C# methods, combining familiar syntax with intellisense, type safety and refactoring.
 
 Result? SQL becomes a *boring* class library exposing its API locally, literally *"Language Integrated SQL"*.
@@ -27,8 +27,8 @@ Skeptic? Fortunately this site is built with a wonderful Try .NET technology. Al
 
 ## SQL Support
 
-XLinq covers the modern SQL DML standard. In addition to conventional relational SQL (SQL-92), XLinq supports [SQL-99 Common Table Expressions (WITH clause)](https://stackoverflow.com/questions/4740748/when-to-use-common-table-expression-cte), [SQL-2003 Window Functions (OVER clause)](https://www.postgresql.org/docs/current/tutorial-window.html), [SQL-2003 MERGE (UPSERT clause)](https://en.wikipedia.org/wiki/Merge_(SQL)), Dynamic Queries and many, many more.
+XLinq fully supports the modern SQL DML standard. In addition to conventional relational SQL (SQL-92), XLinq supports [SQL-99 Common Table Expressions (WITH clause)](https://stackoverflow.com/questions/4740748/when-to-use-common-table-expression-cte), [SQL-2003 Window Functions (OVER clause)](https://www.postgresql.org/docs/current/tutorial-window.html), [SQL-2003 MERGE (UPSERT clause)](https://en.wikipedia.org/wiki/Merge_(SQL)), Dynamic Queries and many, many more.
 
 ## Where can I get XLinq?
 
-The source code of this site is hosted in [GitHub](https://github.com/streamx-co/xlinq.live) with sample projects, instructions to run it [locally](RunLocally.md) and setup.
+The source code of this site is hosted on [GitHub](https://github.com/streamx-co/xlinq.live) with sample projects, instructions to run it [locally](RunLocally.md) and setup.

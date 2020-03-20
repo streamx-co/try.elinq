@@ -1,6 +1,10 @@
 # SQL Server Basics
 
-We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples side by side.
+We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".
+
+> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that it's impossible to handle the complex case without handling the simple one.
+> 
+> So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how XLinq works.
 
 ### Section 1. Querying data
 
@@ -28,10 +32,25 @@ We suggest to open the corresponding [tutorial page](https://www.sqlservertutori
 ### Section 6. Grouping data
 
 - [GROUP BY](GroupBy.md)
+- [HAVING](Having.md)
+- [GROUPING SETS](GroupingSet.md)
+- [CUBE and ROLLUP](CubeRollup.md)
 
 ### Section 7. Subquery
+
+- [Subquery](SubQuery.md)
+- [Correlated subquery](CoSubQuery.md)
+- EXISTS, ANY and ALL are covered in [Subquery](SubQuery.md)
+
 ### Section 8. Set Operators
+
+- [UNION, INTERSECT, EXCEPT](Union.md)
+
 ### Section 9. Common Table Expression (CTE)
+
+- [CTE](CTE.md)
+- [Recursive CTE](RecursiveCTE.md)
+
 ### Section 10. Pivot
 
-- Not Supported 😬
+- Not Supported <big>&#128533;</big>
