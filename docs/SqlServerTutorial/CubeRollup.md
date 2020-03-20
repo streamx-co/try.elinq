@@ -11,4 +11,6 @@ Please go over [GROUPING SETS](GroupingSet.md) first.
 
 Replace `CUBE` with `ROLLUP` above and run!
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

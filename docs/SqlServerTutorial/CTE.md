@@ -29,4 +29,6 @@ SQL Server CTE has a limitation - it cannot be used inside a subquery. As a resu
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/CTE.cs --region C_1
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

@@ -38,4 +38,6 @@ The next few examples in the tutorial do permutations with already covered featu
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/GroupBy.cs --region T4
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

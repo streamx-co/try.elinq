@@ -21,4 +21,6 @@ We `INSERT`, `UPDATE` and `SELECT` in a nice single compound statement (Run to s
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/UpdateJoin.cs --region B
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

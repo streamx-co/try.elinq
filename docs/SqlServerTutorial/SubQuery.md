@@ -54,4 +54,6 @@ XLinq maps SQL's `EXISTS` operator to `Any()`:
 
 > Since XLinq supports variables, this very powerfull feature does not lead to complex nesting.
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

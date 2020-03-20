@@ -17,4 +17,6 @@ Recursive CTE behaves like an iterator. XLinq provides `Current()` method to acc
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/RecursiveCTE.cs --region B
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

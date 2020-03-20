@@ -41,4 +41,6 @@ And `String.Contains()` method to SQL `LIKE` operator:
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Where.cs --region G
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

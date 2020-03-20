@@ -27,4 +27,6 @@ We can also override properties from the passed object by passing additional par
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Insert.cs --region T2
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

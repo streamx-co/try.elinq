@@ -15,4 +15,6 @@ But what we really want is inserting a generic collection, so called _**Batch In
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/InsertMulti.cs --region T2_2
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

@@ -21,4 +21,6 @@
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Distinct.cs --region C2
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

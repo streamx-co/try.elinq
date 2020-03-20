@@ -7,4 +7,6 @@
 
 Replace `UNION_ALL` with `UNION` or `INTERSECT` or `EXCEPT`
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

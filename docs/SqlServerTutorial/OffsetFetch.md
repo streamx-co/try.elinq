@@ -8,4 +8,6 @@
 
 yet we think that in the *outer* context it's preferrable to use Linq's capabilities for ordering and offsetting.
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

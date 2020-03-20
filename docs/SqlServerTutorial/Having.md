@@ -14,4 +14,6 @@
 
 All of them are regular functions in XLinq. A query calling them can be construsted similarly.
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

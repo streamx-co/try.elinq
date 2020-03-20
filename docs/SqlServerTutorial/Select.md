@@ -29,4 +29,6 @@ Retrieving some columns is not a common case in EF and requires declaration of t
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Select.cs --region E
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

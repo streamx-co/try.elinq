@@ -15,4 +15,6 @@ Any number of entities can be joined:
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/InnerJoin.cs --region InnerJoin3
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

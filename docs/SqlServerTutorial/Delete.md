@@ -25,4 +25,6 @@ Common declarations:
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Delete.cs --region T4
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)

@@ -14,4 +14,6 @@ XLinq (pure SQL) is preferred when we don't want to retrieve the entity or a bul
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Update.cs --region T2
 ```
 
+---
+
 [< BACK](Basic.md) | [HOME](/)
