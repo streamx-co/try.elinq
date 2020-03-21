@@ -15,9 +15,9 @@
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/SubQuery.cs --region T1
 ```
 
-> When subquery `SELECTs` a single column (or a tuple), we may return it `AsCollection()` or `AsSingle()`. The correct type propagates out. Thus the return type of `SubQuery()` method is `ICollection<int?>`.
+> When subquery `SELECTs` a single column (or a tuple), we may return it `AsCollection()` or `AsSingle()`. The correct type propagates out. Thus the return type of `SubQuery()` method above is `ICollection<int?>`.
 
-For clarity let's assign the result of the subquery to a local variable (of course SQL is same in either case):
+For clarity let's assign the result of the subquery to a local variable (of course the produced SQL is same in either case):
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/SubQuery.cs --region T1_1
 ```

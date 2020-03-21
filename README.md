@@ -17,7 +17,7 @@ Result? SQL becomes a *boring* class library exposing its API locally, literally
 
 By integrating with EF, XLinq maps EF entities to SQL table and column names.
 
-## What's in the box?
+## What do we have here?
 
 We took popular SQL tutorials and implemented **all examples** from them using XLinq. We want to emphasize that **any** practical DML SQL can be expressed with XLinq with **no compromises**.
 
