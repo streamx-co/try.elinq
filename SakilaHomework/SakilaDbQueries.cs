@@ -22,8 +22,24 @@ namespace SakilaHomework {
         public void Test1B() {
 
             #region Test1B
-            var query = DbContext.ActorNames.Query((Actor actor, ActorName actorName) => {
-                var result = SELECT<ActorName>($"{actor.FirstName} {actor.LastName}".ToUpper().@as(actorName.FullName));
+            var query = DbContext.ActorNames.Query((Actor actor, ActorName alias) => {
+                var result = SELECT<ActorName>((actor.FirstName + " " + actor.LastName).ToUpper().@as(alias.FullName));
+                FROM(actor);
+
+                return result;
+            });
+
+            foreach (var actorName in query.Take(3))
+                Console.WriteLine(actorName.FullName);
+            #endregion
+
+        }
+        
+        public void Test1B_1() {
+
+            #region Test1B_1
+            var query = DbContext.ActorNames.Query((Actor actor, ActorName alias) => {
+                var result = SELECT<ActorName>($"{actor.FirstName} {actor.LastName}".ToUpper().@as(alias.FullName));
                 FROM(actor);
 
                 return result;
@@ -115,8 +131,8 @@ namespace SakilaHomework {
         public void Test4A() {
 
             #region Test4A
-            var query = DbContext.ActorNameCounts.Query((Actor actor, ActorNameCount count) => {
-                var result = SELECT<ActorNameCount>(actor.LastName.@as(count.LastName), COUNT().@as(count.Count));
+            var query = DbContext.ActorNameCounts.Query((Actor actor, ActorNameCount alias) => {
+                var result = SELECT<ActorNameCount>(actor.LastName.@as(alias.LastName), COUNT().@as(alias.Count));
                 FROM(actor);
                 GROUP(BY(actor.LastName));
                 ORDER(BY(actor.LastName).DESC);
@@ -133,10 +149,10 @@ namespace SakilaHomework {
         public void Test4B() {
 
             #region Test4B
-            var query = DbContext.ActorNameCounts.Query((Actor actor, ActorNameCount count) => {
+            var query = DbContext.ActorNameCounts.Query((Actor actor, ActorNameCount alias) => {
                 var actorCount = COUNT();
 
-                var result = SELECT<ActorNameCount>(actor.LastName.@as(count.LastName), actorCount.@as(count.Count));
+                var result = SELECT<ActorNameCount>(actor.LastName.@as(alias.LastName), actorCount.@as(alias.Count));
                 FROM(actor);
                 GROUP(BY(actor.LastName));
                 HAVING(actorCount > 1);
@@ -184,8 +200,8 @@ namespace SakilaHomework {
             var payMonth = 8;
             var payYear = 2005;
 
-            var query = DbContext.StaffPayments.Query((Staff staff, Payment payment, StaffPayment staffPayment) => {
-                    var r = SELECT<StaffPayment>(staff.StaffId.@as(staffPayment.Staff.StaffId), SUM(payment.Amount).@as(staffPayment.Amount));
+            var query = DbContext.StaffPayments.Query((Staff staff, Payment payment, StaffPayment alias) => {
+                    var r = SELECT<StaffPayment>(staff.StaffId.@as(alias.Staff.StaffId), SUM(payment.Amount).@as(alias.Amount));
                     FROM(staff).LEFT_JOIN(payment).ON(staff == payment.Staff);
                     WHERE(MONTH(payment.PaymentDate) == payMonth && YEAR(payment.PaymentDate) == payYear);
                     GROUP(BY(staff.StaffId)); //must GROUP BY StaffId since this field is used in SELECT
@@ -206,8 +222,8 @@ namespace SakilaHomework {
             var payMonth = 8;
             var payYear = 2005;
 
-            var query = DbContext.StaffPayments.Query((Staff staff, Payment payment, StaffPayment staffPayment) => {
-                    var r = SELECT<StaffPayment>(staff.StaffId.@as(staffPayment.Staff.StaffId), SUM(payment.Amount).@as(staffPayment.Amount));
+            var query = DbContext.StaffPayments.Query((Staff staff, Payment payment, StaffPayment alias) => {
+                    var r = SELECT<StaffPayment>(staff.StaffId.@as(alias.Staff.StaffId), SUM(payment.Amount).@as(alias.Amount));
                     FROM(staff).LEFT_JOIN(payment).ON(staff == payment.Staff);
                     WHERE(payment.PaymentDate.Month == payMonth && payment.PaymentDate.Year == payYear);
                     GROUP(BY(staff.StaffId)); //must GROUP BY StaffId since this field is used in SELECT

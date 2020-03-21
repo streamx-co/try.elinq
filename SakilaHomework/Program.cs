@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Models.Sakila;
 using Streamx.Linq.SQL.EFCore;
@@ -54,29 +58,50 @@ namespace SakilaHomework {
     }
 
     class Program {
+        private static readonly String RootNamespace = typeof(Program).Namespace;
+
         public static void Main(string region = null,
             string session = null,
             string package = null,
             string project = null,
-            string[] args = null) {
+            string sourceFile = null) {
 
-            if (session != null)
-                Test(session, region);
+            if (sourceFile != null)
+                ExecuteSingleExample(region, sourceFile);
             else {
-                foreach (var method in typeof(SakilaDbQueries).GetMethods()) {
-                    if (!method.IsStatic && method.GetParameters().Length == 0)
-                        Test(method.Name, "SakilaDbQueries");
+
+                var target = typeof(SakilaDbQueries);
+                ExecuteAllExamples(target);
+
+                Console.WriteLine($"{counter} examples executed");
+            }
+        }
+
+        static int counter;
+
+        private static void ExecuteAllExamples(Type type) {
+
+            foreach (var method in type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public)) {
+                if (method.GetParameters().Length == 0) {
+                    ExecuteSingleExample(method, type);
+
+                    counter++;
                 }
             }
         }
 
-        private static void Test(string session, string region) {
+        private static void ExecuteSingleExample(MethodInfo method, Type type) {
             using var context = new MyContext();
-            using var t = context.Database.BeginTransaction();
+            var queries = Activator.CreateInstance(type, context);
             
-            var queries = new SakilaDbQueries(context);
-            // ReSharper disable once PossibleNullReferenceException
-            queries.GetType().GetMethod(region).Invoke(queries, null);
+            using var t = context.Database.BeginTransaction();
+            method.Invoke(queries, null);
+        }
+
+        private static void ExecuteSingleExample(string methodName, string sourceFile) {
+            var start = sourceFile.IndexOf(RootNamespace, StringComparison.Ordinal);
+            var type = Type.GetType(sourceFile.Substring(start, sourceFile.Length - start - 3).Replace('/', '.'));
+            ExecuteSingleExample(type?.GetMethod(methodName), type);
         }
     }
 }
