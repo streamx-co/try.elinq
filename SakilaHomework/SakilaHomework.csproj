@@ -16,12 +16,12 @@
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.20104.2" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <ProjectReference Include="..\..\XLinq\SQL.Net.EFCore\SQL.Net.EFCore.csproj" />
     <ProjectReference Include="..\..\XLinq\SQL.Net\SQL.Net.csproj" />
-  </ItemGroup>
+  </ItemGroup>-->
   
-  <!--<ItemGroup>
+  <ItemGroup>
     <Reference Include="SQL.Net.EFCore">
       <HintPath>../../XLinq/SQL.Net.EFCore/bin/Release/netstandard2.1/SQL.Net.EFCore.dll</HintPath>
     </Reference>
@@ -34,7 +34,7 @@
     <Reference Include="SQLGrammar">
       <HintPath>../../XLinq/SQLGrammar/bin/Release/netstandard2.0/SQLGrammar.dll</HintPath>
     </Reference>
-  </ItemGroup>-->
+  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
