@@ -15,3 +15,7 @@ This site is built with a wonderful Try .NET technology. All the examples are in
 > All the examples are executed against a real database, created according to provided [instructions](https://www.sqlservertutorial.net/load-sample-database/). The DbContext is [scaffolded](https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding) with EF tooling in a separate project [hosted](https://github.com/streamx-co/xlinq.live/tree/master/Models) on GitHub.
 >
 > All queries are executed in a transaction, which is rolled back at the end. Therefore no changes are persisted and each query can be executed multiple times producing same results. In addition we installed a [console logger](https://docs.microsoft.com/en-us/ef/core/miscellaneous/logging) to inspect the executed SQL.
+
+---
+
+[< BACK](/README.md) | [HOME](/)

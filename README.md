@@ -24,6 +24,7 @@ We took popular SQL tutorials and implemented **all examples** from them using X
 Skeptic? Fortunately this site is built with a wonderful Try .NET technology. All the examples are interactive, intellisense enabled and runnable with changes you may make. Enjoy!
 
 - [SQL Server Tutorial](docs/SqlServerTutorial/README.md)
+- [Sakila Homework](docs/SakilaHomework/README.md) (MySQL)
 
 ## SQL Support
 
