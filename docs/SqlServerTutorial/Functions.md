@@ -8,6 +8,8 @@ XLinq offers all of these as a local class library.
 - [System Functions](SystemFunctions.md)
 - [Window Functions](WindowFunctions.md)
 
+This list is available from the top right `Functions` menu on the [tutorial site](https://www.sqlservertutorial.net/)
+
 ---
 
 [< BACK](README.md) | [HOME](/)

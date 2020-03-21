@@ -64,7 +64,7 @@
 
 ### Section 10. Pivot
 
-- Not Supported <big>&#128533;</big>
+- Not Supported &#128556;
 
 ### Section 11. Modifying data
 
