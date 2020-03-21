@@ -10,7 +10,7 @@ function cleanup()
 
 trap 'cleanup' INT TERM
 
-/root/.dotnet/tools/dotnet-try /xlinq/ --port 8080 &
+dotnet try /xlinq/ --port 8080 &
 TRY=$!
 nginx -g "daemon off;" &
 XXX=$!

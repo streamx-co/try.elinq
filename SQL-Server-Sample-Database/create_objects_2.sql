@@ -126,6 +126,7 @@ VALUES(1,'Children Bicycles',15000),
     (2,'Comfort Bicycles',25000),
     (3,'Cruisers Bicycles',13000),
     (4,'Cyclocross Bicycles',10000);
+GO
     
 CREATE FUNCTION sales.udfNetSale(
     @quantity INT,
@@ -137,6 +138,7 @@ AS
 BEGIN
     RETURN @quantity * @list_price * (1 - @discount);
 END;
+GO
 
 CREATE FUNCTION udfProductInYear (
     @model_year INT
@@ -152,6 +154,7 @@ RETURN
         production.products
     WHERE
         model_year = @model_year;
+GO
 
 CREATE VIEW sales.vw_netsales_brands
 AS

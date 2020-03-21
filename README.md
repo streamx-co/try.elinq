@@ -13,18 +13,18 @@ XLinq is a **L**anguage **IN**tegrated **Q**uery technology for relational (SQL)
 
 Result? SQL becomes a *boring* class library exposing its API locally, literally *"Language Integrated SQL"*.
 
-## EF Core Integration
-
-By integrating with EF, XLinq maps EF entities to SQL table and column names.
-
 ## What do we have here?
 
 We took popular SQL tutorials and implemented **all examples** from them using XLinq. We want to emphasize that **any** practical DML SQL can be expressed with XLinq with **no compromises**.
 
 Skeptic? Fortunately this site is built with a wonderful Try .NET technology. All the examples are interactive, intellisense enabled and runnable with changes you may make. Enjoy!
 
-- [SQL Server Tutorial](docs/SqlServerTutorial/README.md)
-- [Sakila Homework](docs/SakilaHomework/README.md) (MySQL)
+- [SQL Server Tutorial](docs/SqlServerTutorial/README.md) - more 100 examples covering the entire SQL
+- [Sakila Homework](docs/SakilaHomework/README.md) (MySQL database)
+
+## EF Core Integration
+
+By integrating with EF, XLinq maps EF entities to SQL table and column names.
 
 ## SQL Support
 
