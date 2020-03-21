@@ -1,5 +1,13 @@
 # SQL Server ORDER BY
 
+- [A) Sort a result set by one column in ascending order](#a-sort-a-result-set-by-one-column-in-ascending-order)
+- [B) Sort a result set by one column in descending order](#b-sort-a-result-set-by-one-column-in-descending-order)
+- [C) Sort a result set by multiple columns](#c-sort-a-result-set-by-multiple-columns)
+- [D) Sort a result set by multiple columns and different orders](#d-sort-a-result-set-by-multiple-columns-and-different-orders)
+- [E) Sort a result set by a column that is not in the select list](#e-sort-a-result-set-by-a-column-that-is-not-in-the-select-list)
+- [F) Sort a result set by an expression](#f-sort-a-result-set-by-an-expression)
+- [G) Sort by ordinal positions of columns](#g-sort-by-ordinal-positions-of-columns)
+
 ### A) Sort a result set by one column in ascending order
 
 There is a full integration between XLinq and EF, so we can sort using Linq. This is usually preferrable since we usually want to sort the *outer* result set managed by EF (run and see the SQL to understand better).

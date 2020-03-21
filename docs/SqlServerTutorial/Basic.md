@@ -2,9 +2,20 @@
 
 **We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".**
 
-> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that the advanced cases are built on patterns and practices of simple cases.
+> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that the advanced cases are built on patterns of simple cases.
 >
 > So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how XLinq works.
+
+- [Section 1. Querying data](#section-1.querying-data)
+- [Section 2. Sorting data](#section-2.sorting-data)
+- [Section 3. Limiting rows](#section-3.limiting-rows)
+- [Section 4. Filtering data](#section-4.filtering-data)
+- [Section 5. Joining tables](#section-5.joining-tables)
+- [Section 6. Grouping data](#section-6.grouping-data)
+- [Section 7. Subquery](#section-7.subquery)
+- [Section 8. Set Operators](#section-8.set-operators)
+- [Section 9. Common Table Expression (CTE)](#section-9.common-table-expression-cte)
+- [Section 11. Modifying data](#section-11.modifying-data)
 
 ### Section 1. Querying data
 
