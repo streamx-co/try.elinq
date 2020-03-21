@@ -22,7 +22,6 @@ namespace SqlServerTutorial.Functions.Window {
             #region A
             var query = DbContext.Set<ProductRank>()
                 .Query((Products products, ProductRank alias) => {
-
                     var priceRank = AggregateBy(DENSE_RANK())
                         .OVER(ORDER(BY(products.ListPrice).DESC));
 
@@ -45,7 +44,6 @@ namespace SqlServerTutorial.Functions.Window {
             #region B
             var query = DbContext.Set<ProductRank>()
                 .Query((Products products, ProductRank alias) => {
-
                     var priceRank = AggregateBy(DENSE_RANK())
                         .OVER(PARTITION(BY(products.CategoryId))
                             .ORDER(BY(products.ListPrice).DESC));

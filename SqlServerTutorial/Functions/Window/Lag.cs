@@ -22,7 +22,6 @@ namespace SqlServerTutorial.Functions.Window {
 
             var query = DbContext.Set<VwNetSalesBrandsCompare>()
                 .Query((VwNetSalesBrandsCompare alias) => {
-
                     var yearSales = SubQuery((VwNetsalesBrands sales) => {
                         var r = SELECT<VwNetsalesBrands>(sales.Month.@as(), SUM(sales.NetSales).@as(sales.NetSales));
                         FROM(sales);
@@ -60,7 +59,6 @@ namespace SqlServerTutorial.Functions.Window {
 
             var query = DbContext.Set<VwNetSalesBrandsCompare>()
                 .Query((VwNetsalesBrands sales, VwNetSalesBrandsCompare alias) => {
-
                     var prevMonthSales = AggregateBy(LAG(sales.NetSales, 1))
                         .OVER(PARTITION(BY(sales.BrandName)).ORDER(BY(sales.Month)));
 

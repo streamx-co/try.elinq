@@ -23,7 +23,6 @@ namespace SqlServerTutorial.Functions.Window {
             #region A
             var query = DbContext.Set<CustomerOrder>()
                 .Query((Customers customer, CustomerOrder alias) => {
-
                     var rowNum = AggregateBy(ROW_NUMBER())
                         .OVER(ORDER(BY(customer.FirstName)));
 
@@ -46,7 +45,6 @@ namespace SqlServerTutorial.Functions.Window {
             #region B
             var query = DbContext.Set<CustomerOrder>()
                 .Query((Customers customer, CustomerOrder alias) => {
-
                     var rowNum = AggregateBy(ROW_NUMBER())
                         .OVER(PARTITION(BY(customer.City))
                             .ORDER(BY(customer.FirstName)));
@@ -72,7 +70,6 @@ namespace SqlServerTutorial.Functions.Window {
             var query = DbContext.Customers
                 .Query((Customers customer) => {
                     var order = SubQuery((CustomerOrder alias) => {
-
                         var rowNum = AggregateBy(ROW_NUMBER())
                             .OVER(ORDER(BY(customer.FirstName), BY(customer.LastName)));
 

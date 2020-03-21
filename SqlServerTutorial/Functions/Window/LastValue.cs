@@ -23,7 +23,6 @@ namespace SqlServerTutorial.Functions.Window {
 
             var query = DbContext.Set<SalesVolume>()
                 .Query((VwCategorySalesVolume salesVolume, SalesVolume alias) => {
-
                     var highestSalesVolume = AggregateBy(LAST_VALUE(salesVolume.CategoryName))
                         .OVER(ORDER(BY(salesVolume.Qty))
                             .RANGE()
@@ -53,7 +52,6 @@ namespace SqlServerTutorial.Functions.Window {
 
             var query = DbContext.Set<SalesVolume>()
                 .Query((VwCategorySalesVolume salesVolume, SalesVolume alias) => {
-
                     var highestSalesVolume = AggregateBy(LAST_VALUE(salesVolume.CategoryName))
                         .OVER(PARTITION(BY(salesVolume.Year))
                             .ORDER(BY(salesVolume.Qty))

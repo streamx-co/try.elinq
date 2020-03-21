@@ -23,7 +23,6 @@ namespace SqlServerTutorial.Functions.Window {
 
             var query = DbContext.Set<StaffSalesPercentile>()
                 .Query((VwStaffSales sales, Staffs staffs, StaffSalesPercentile alias) => {
-
                     var fullName = CONCAT_WS(" ", staffs.FirstName, staffs.LastName);
                     var cumeDist = AggregateBy(PERCENT_RANK())
                         .OVER(ORDER(BY(sales.NetSales).DESC));
@@ -51,7 +50,6 @@ namespace SqlServerTutorial.Functions.Window {
 
             var query = DbContext.Set<StaffSalesPercentile>()
                 .Query((VwStaffSales sales, Staffs staffs, StaffSalesPercentile alias) => {
-
                     var fullName = CONCAT_WS(" ", staffs.FirstName, staffs.LastName);
                     var cumeDist = AggregateBy(PERCENT_RANK())
                         .OVER(PARTITION(BY(sales.Year))
