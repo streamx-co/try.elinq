@@ -3,7 +3,7 @@
 **We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".**
 
 > **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that the advanced cases are built on patterns and practices of simple cases.
-> 
+>
 > So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how XLinq works.
 
 ### Section 1. Querying data
