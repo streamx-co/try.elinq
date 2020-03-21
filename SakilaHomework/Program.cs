@@ -35,7 +35,7 @@ namespace SakilaHomework {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
-            optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=123pass;database=sakila;pooling=true;charset=utf8",
+            optionsBuilder.UseMySql("server=mysql;port=3376;user=root;password=455Password;database=sakila;pooling=true;charset=utf8",
                 x => x.ServerVersion("8.0-mysql"));
             
             XLinq.Configuration.RegisterVendorCapabilities();

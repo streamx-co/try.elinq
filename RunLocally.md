@@ -23,6 +23,15 @@
     -v <xlinq.live>/sakila/mysql:/docker-entrypoint-initdb.d -p 3376:3306 -d mysql:8
     ```
 
+1. Edit /etc/hosts (windows: c:\windows\system32\drivers\etc\hosts)
+
+    Add 2 lines:
+
+    ```sh
+    127.0.0.1   mssql
+    127.0.0.1   mysql
+    ```
+
 ### With IDE
 
 Open xlink.live.sln. It contains 2 projects:

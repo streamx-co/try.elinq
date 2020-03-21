@@ -21,7 +21,7 @@ namespace SqlServerTutorial {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=BikeStores;User Id=sa;Password=455Password");
+            optionsBuilder.UseSqlServer("Server=mssql,1473;Database=BikeStores;User Id=sa;Password=455Password");
 
             XLinq.Configuration.RegisterVendorCapabilities();
 
