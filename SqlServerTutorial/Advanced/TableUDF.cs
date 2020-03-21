@@ -13,6 +13,7 @@ namespace SqlServerTutorial.Advanced {
             DbContext = context;
         }
 
+        #region CallTableUDF
         [Function("udfProductInYear", RequiresAlias = true), Tuple]
         public static ProductInYear GetProductInYear(int year) {
             // the method is not supported on .NET platform.
@@ -20,17 +21,14 @@ namespace SqlServerTutorial.Advanced {
             throw new NotSupportedException();
         }
 
-        public void T1() {
-
-            #region T1
+        public void CallTableUDF() {
             var query = DbContext.Set<ProductInYear>()
                 .Query(() => SelectAll(GetProductInYear(2017)));
 
             foreach (var orderNetValue in query.Take(3))
                 Console.WriteLine((orderNetValue.ProductName, orderNetValue.ModelYear, orderNetValue.ListPrice));
-            #endregion
-
         }
+        #endregion
 
         public void T2() {
 
