@@ -9,7 +9,7 @@
 
     ```sh
     docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=455Password' -p 1473:1433 -d \
-    -v <xlinq.live>/SQL-Server-Sample-Database:/docker-entrypoint-initdb.d \
+    -v <xlinq.live>/DB/BikeStores:/docker-entrypoint-initdb.d \
     -v sqlvolume:/var/opt/mssql mcr.microsoft.com/mssql/server:2019-latest \
     bash docker-entrypoint-initdb.d/entrypoint.sh
     ```
@@ -20,7 +20,7 @@
 
     ```sh
     docker run -e MYSQL_ROOT_PASSWORD=455Password \
-    -v <xlinq.live>/sakila/mysql:/docker-entrypoint-initdb.d -p 3376:3306 -d mysql:8
+    -v <xlinq.live>/DB/sakila/mysql:/docker-entrypoint-initdb.d -p 3376:3306 -d mysql:8
     ```
 
 1. Edit /etc/hosts (windows: c:\windows\system32\drivers\etc\hosts)
