@@ -8,10 +8,10 @@ XLinq is a **L**anguage **IN**tegrated **Q**uery technology for relational (SQL)
 
 **X** prefix provides 2 new capabilities:
 
-- full C# support: multiple statements inside lambda, variables, functions etc - use all language features for query creation.
-- no "special" syntax or [unexpected provider specific behavior](https://docs.microsoft.com/en-us/ef/core/querying/how-query-works/). XLinq declares SQL statements (like `SELECT`, `FROM`, `WHERE`) as first class C# methods, combining familiar syntax with intellisense, type safety and refactoring.
+- Full C# support for query creation: multiple statements inside lambda, variables, functions, etc.
+- No semantic gap with SQL. XLinq declares SQL statements (like `SELECT`, `FROM`, `WHERE`) as first class C# methods, combining familiar syntax with intellisense, type safety and refactoring.
 
-Result? SQL becomes a *boring* class library exposing its API locally, literally *"Language Integrated SQL"*.
+As a result SQL becomes just "another" class library exposing its API locally, literally *"Language Integrated SQL"*.
 
 ## Curious?
 
