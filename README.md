@@ -34,4 +34,5 @@ XLinq fully supports the modern SQL [DML](https://en.wikipedia.org/wiki/Data_man
 
 ## Where can I get XLinq?
 
-The source code of this site is hosted on [GitHub](https://github.com/streamx-co/xlinq.live) with setup [instructions](Setup.md) and [sample projects](RunLocally.md).
+<!-- The source code of this site is hosted on [GitHub](https://github.com/streamx-co/xlinq.live) with -->
+Setup [instructions](https://github.com/streamx-co/xlinq.live/blob/master/Setup.md) and [sample projects](https://github.com/streamx-co/xlinq.live/blob/master/RunLocally.md).
