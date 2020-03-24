@@ -8,9 +8,9 @@ To demonstrate XLinq capabilities we took examples from a popular [SQL Server Tu
 
 This site is built with a wonderful Try .NET technology. All the examples are interactive, intellisense enabled and runnable with changes you may make. Enjoy!
 
-- [Standard](Basic.md)&nbsp;&nbsp;&nbsp;(actually most of SQL is here, including many advanced concepts <big>&#128521;</big>)
+- [Standard](Basic.md)&nbsp; (actually most of SQL is here, including many advanced concepts <big>&#128521;</big>)
 - [Advanced](UDF.md) (User-defined Functions)
-- [Functions](Functions.md)&nbsp; (Builtin Functions)
+- [Functions](Functions.md) (Builtin Functions)
 
 > All the examples are executed against a real database, created according to provided [instructions](https://www.sqlservertutorial.net/load-sample-database/). The DbContext is [scaffolded](https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding) with EF tooling in a separate project [hosted](https://github.com/streamx-co/xlinq.live/tree/master/Models) on GitHub.
 >

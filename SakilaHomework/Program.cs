@@ -37,8 +37,6 @@ namespace SakilaHomework {
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
             optionsBuilder.UseMySql("server=mysql;port=3376;user=root;password=455Password;database=sakila;pooling=true;charset=utf8",
                 x => x.ServerVersion("8.0-mysql"));
-            
-            XLinq.Configuration.RegisterVendorCapabilities();
 
             base.OnConfiguring(optionsBuilder);
         }
@@ -50,6 +48,7 @@ namespace SakilaHomework {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 
+            XLinq.Configuration.RegisterVendorCapabilities();
 
             modelBuilder.Entity<ActorName>(entity => entity.HasNoKey());
             modelBuilder.Entity<ActorNameCount>(entity => entity.HasNoKey());

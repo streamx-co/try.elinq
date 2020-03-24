@@ -23,8 +23,6 @@ namespace SqlServerTutorial {
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
             optionsBuilder.UseSqlServer("Server=mssql,1473;Database=BikeStores;User Id=sa;Password=455Password");
 
-            XLinq.Configuration.RegisterVendorCapabilities();
-
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -71,6 +69,8 @@ namespace SqlServerTutorial {
                 entity.Property(e => e.ProductName)
                     .HasColumnName("product_name");
             });
+            
+            XLinq.Configuration.RegisterVendorCapabilities();
         }
     }
 

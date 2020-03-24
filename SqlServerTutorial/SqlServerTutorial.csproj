@@ -17,37 +17,18 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Streamx.Linq.SQL.Grammar" Version="1.0.0-preview.2" />
     <PackageReference Include="Streamx.Linq.SQL" Version="1.0.0-preview.2" />
-    <PackageReference Include="Streamx.Linq.ExTree" Version="1.0.0-preview.2" />
     <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="1.0.0-preview.2" />
   </ItemGroup>
 
-  <!--<ItemGroup>
-    <ProjectReference Include="..\..\XLinq\SQL.Net.EFCore\SQL.Net.EFCore.csproj" />
-    <ProjectReference Include="..\..\XLinq\SQL.Net\SQL.Net.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
-  </ItemGroup>-->
-
-  <!--<ItemGroup>
-    <Reference Include="SQL.Net.EFCore">
-      <HintPath>../../XLinq/SQL.Net.EFCore/bin/Release/netstandard2.1/SQL.Net.EFCore.dll</HintPath>
-    </Reference>
-    <Reference Include="SQL.Net">
-      <HintPath>../../XLinq/SQL.Net/bin/Release/netstandard2.1/SQL.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="ExTree">
-      <HintPath>../../XLinq/ExTree/bin/Release/netstandard2.0/ExTree.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLGrammar">
-      <HintPath>../../XLinq/SQLGrammar/bin/Release/netstandard2.0/SQLGrammar.dll</HintPath>
-    </Reference>
-  </ItemGroup>-->
-
   <ItemGroup>
+    <ProjectReference Include="../Models/Models.csproj" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
     <Reference Include="Models">
       <HintPath>../Models/bin/Release/netstandard2.0/Models.dll</HintPath>
     </Reference>
-  </ItemGroup>
+  </ItemGroup>-->
 
 </Project>
