@@ -11,7 +11,7 @@ To run locally examples from this tutorial follow these [instructions](RunLocall
   - `using Streamx.Linq.SQL.EFCore;`
   - `using Streamx.Linq.SQL.<vendor>;`
   - `using static Streamx.Linq.SQL.SQL;`
-  - `using static Streamx.Linq.SQL.MySQL.SQL;`
+  - `using static Streamx.Linq.SQL.<vendor>.SQL;`
   - `using static Streamx.Linq.SQL.Library;`
   - `using static Streamx.Linq.SQL.Directives;`
   - `using static Streamx.Linq.SQL.AggregateFunctions;`
