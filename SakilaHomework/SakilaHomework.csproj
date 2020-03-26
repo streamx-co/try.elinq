@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Streamx.Linq.SQL" Version="1.0.0-preview.2" />
-    <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="1.0.0-preview.2" />
+    <PackageReference Include="Streamx.Linq.SQL" Version="1.0.0-preview.3" />
+    <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="1.0.0-preview.3" />
   </ItemGroup>
 
   <ItemGroup>
