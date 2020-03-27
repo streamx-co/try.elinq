@@ -1,6 +1,6 @@
 # SQL Server Tutorial
 
-![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)
+<big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](http://xlinq.live)
 
 XLinq allows you to use C# (or your .NET language of choice) to write strongly typed queries. It is capable to represent _**any**_ practical SQL [DML](https://en.wikipedia.org/wiki/Data_manipulation_language).
 
