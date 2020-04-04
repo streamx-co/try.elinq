@@ -34,7 +34,7 @@
 
 ### With IDE
 
-Open xlink.live.sln. It contains 2 projects:
+Open xlinq.live.sln. It contains 2 projects:
 
 - SqlServerTutorial
 - SakilaHomework
