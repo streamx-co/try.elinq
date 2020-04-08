@@ -15,6 +15,11 @@ Retrieving some columns is not a common case in EF and requires declaration of t
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Select.cs --region A
 ```
 
+Another option is to use LINQ for the anonymous top level projection. See how easy is to mix XLINQ and LINQ:
+
+```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Select.cs --region A_1
+```
+
 ### B) SQL Server `SELECT` – retrieve all columns from a table
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Select.cs --region B

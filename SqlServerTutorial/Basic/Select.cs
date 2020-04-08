@@ -31,6 +31,23 @@ namespace SqlServerTutorial.Basic {
 
         }
 
+        public void A_1() {
+
+            #region A_1
+            var query = from customers in DbContext.Customers.Query((Customers customer) => {
+                    var result = SELECT(customer);
+                    FROM(customer);
+
+                    return result;
+                })
+                select new {customers.FirstName, customers.LastName};
+
+            foreach (var customer in query.Take(3))
+                Console.WriteLine((customer.FirstName, customer.LastName));
+            #endregion
+
+        }
+
         public void B() {
 
             #region B
@@ -66,7 +83,7 @@ namespace SqlServerTutorial.Basic {
             #endregion
 
         }
-        
+
         public void D() {
 
             #region D
