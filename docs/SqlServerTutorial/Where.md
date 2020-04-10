@@ -37,7 +37,7 @@ Let's start using parameters:
 
 ### F) Finding rows that have a value in a list of values
 
-XLinq maps `IList.Contains()` method to SQL `IN` operator:
+ELINQ maps `IList.Contains()` method to SQL `IN` operator:
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Where.cs --region F
 ```

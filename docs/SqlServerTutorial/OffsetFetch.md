@@ -1,6 +1,6 @@
 # SQL Server OFFSET FETCH
 
-`OFFSET` and `FETCH` are fully supported in XLinq:
+`OFFSET` and `FETCH` are fully supported in ELINQ:
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/OffsetFetch.cs --region Offset
 }

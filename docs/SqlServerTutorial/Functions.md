@@ -1,6 +1,6 @@
 # SQL Server Builtin Functions
 
-XLinq offers all of these as a local class library.
+ELINQ offers all of these as a local class library.
 
 - [Aggregate Functions](AggregateFunctions.md)
 - [Date Functions](DateFunctions.md)

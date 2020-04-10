@@ -52,7 +52,7 @@ Just replace `ANY` with `ALL` above and run!
 
 ##### customers who did not buy any products in 2017:
 
-XLinq maps SQL's `EXISTS` operator to `Any()`:
+ELINQ maps SQL's `EXISTS` operator to `Any()`:
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/SubQuery.cs --region T8
 ```
@@ -62,7 +62,7 @@ XLinq maps SQL's `EXISTS` operator to `Any()`:
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/SubQuery.cs --region T9
 ```
 
-> Since XLinq supports variables, this very powerfull feature does not lead to complex nesting.
+> Since ELINQ supports variables, this very powerfull feature does not lead to complex nesting.
 
 ---
 

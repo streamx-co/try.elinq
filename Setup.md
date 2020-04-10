@@ -4,8 +4,8 @@ To run locally examples from this tutorial follow these [instructions](RunLocall
 
 ## Project Setup
 
-- Add references to the following assemblies: <sub>[![nuget](https://img.shields.io/nuget/v/Streamx.Linq.SQL?label=XLINQ%20SQL)](https://www.nuget.org/packages/Streamx.Linq.SQL)
-[![nuget](https://img.shields.io/nuget/v/Streamx.Linq.SQL.EFCore?label=XLINQ%20EF%20Core)](https://www.nuget.org/packages/Streamx.Linq.SQL.EFCore)</sub>
+- Add references to the following assemblies: <sub>[![nuget](https://img.shields.io/nuget/v/Streamx.Linq.SQL?label=ELINQ%20SQL)](https://www.nuget.org/packages/Streamx.Linq.SQL)
+[![nuget](https://img.shields.io/nuget/v/Streamx.Linq.SQL.EFCore?label=ELINQ%20EF%20Core)](https://www.nuget.org/packages/Streamx.Linq.SQL.EFCore)</sub>
 - Add using declarations:
 
   - `using Streamx.Linq.SQL.EFCore;`
@@ -25,7 +25,7 @@ To run locally examples from this tutorial follow these [instructions](RunLocall
   protected override void OnModelCreating(ModelBuilder modelBuilder) {
     base.OnModelCreating(modelBuilder);
 
-    XLinq.Configuration.RegisterVendorCapabilities();
+    ELinq.Configuration.RegisterVendorCapabilities();
     ...
   }
   ```

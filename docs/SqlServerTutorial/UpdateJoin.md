@@ -2,7 +2,7 @@
 
 EF does a thorough work to track entity state. In cases where the *fact* of change is not clear, it's usually better to let EF to manage the update.
 
-XLinq (pure SQL) is preferred when we don't want to retrieve the entity or a bulk update is needed.
+ELINQ (pure SQL) is preferred when we don't want to retrieve the entity or a bulk update is needed.
 
 ### A) SQL Server `UPDATE INNER JOIN` example
 

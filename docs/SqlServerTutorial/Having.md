@@ -12,7 +12,7 @@
 
 ### `MAX()`, `MIN()`, `AVG()` ...
 
-All of them are regular functions in XLinq. A query calling them can be construsted similarly.
+All of them are regular functions in ELINQ. A query calling them can be construsted similarly.
 
 ---
 

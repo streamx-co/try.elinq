@@ -2,9 +2,9 @@
 
 **We suggest to open the corresponding [tutorial page](https://www.sqlservertutorial.net/sql-server-basics/) and go over the examples "side by side".**
 
-> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of XLinq is that the advanced cases are built on patterns of simple cases.
+> **Disclaimer**: Linq handles most of functionality up to tutorial's section 7 very elegantly. There is no much value in replacing it for these cases. The reason we demonstrate the basic SQL capabilites of ELINQ is that the advanced cases are built on patterns of simple cases.
 >
-> So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how XLinq works.
+> So before jumping to the advanced cases, we suggest to go over and run few basic ones to understand how ELINQ works.
 
 - [Section 1. Querying data](#section-1.querying-data)
 - [Section 2. Sorting data](#section-2.sorting-data)
@@ -38,7 +38,7 @@
 ### Section 5. Joining tables
 
 - [INNER JOIN](InnerJoin.md)
-- Since joins in XLinq are functions, using a required join type is merely a call to the correct function.
+- Since joins in ELINQ are functions, using a required join type is merely a call to the correct function.
 
 ### Section 6. Grouping data
 

@@ -2,11 +2,11 @@
 
 <big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](http://xlinq.live)
 
-XLinq allows you to use C# (or your .NET language of choice) to write strongly typed queries. It is capable to represent _**any**_ practical SQL [DML](https://en.wikipedia.org/wiki/Data_manipulation_language).
+ELINQ allows you to use C# (or your .NET language of choice) to write strongly typed queries. It is capable to represent _**any**_ practical SQL [DML](https://en.wikipedia.org/wiki/Data_manipulation_language).
 
 Sakila is a popular [sample database](https://dev.mysql.com/doc/sakila/en/) developed by MySQL. Many institutions build their SQL exams and homeworks on this database (Google for ["Sakila Homework"](https://www.google.com/search?q=Sakila+Homework)).
 
-To demonstrate XLinq capabilities we took questions from one such [homework](https://github.com/joelsotelods/sakila-db-queries) and implemented them in C# and XLinq in a strongly typed way. Our goal is to show "pixel-perfect" SQL translation, EF integration, type safety and ease of use (we take the example as is, without trying to improve SQL).
+To demonstrate ELINQ capabilities we took questions from one such [homework](https://github.com/joelsotelods/sakila-db-queries) and implemented them in C# and ELINQ in a strongly typed way. Our goal is to show "pixel-perfect" SQL translation, EF integration, type safety and ease of use (we take the example as is, without trying to improve SQL).
 
 This site is built with a wonderful Try .NET technology. All the examples are interactive, intellisense enabled and runnable with changes you may make. Enjoy!
 

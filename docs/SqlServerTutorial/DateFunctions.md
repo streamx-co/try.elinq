@@ -7,7 +7,7 @@
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Functions/Day.cs --region CalcGrossSalesByDay
 ```
 
-> XLinq maps the `DateTime` properties to the corresponding SQL functions, but a "direct" call is supported as well (line 16).
+> ELINQ maps the `DateTime` properties to the corresponding SQL functions, but a "direct" call is supported as well (line 16).
 
 ---
 

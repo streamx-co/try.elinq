@@ -7,7 +7,7 @@ Weekday declaration:
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/RecursiveCTE.cs --region Weekday --editable false
 ```
 
-Recursive CTE behaves like an iterator. XLinq provides `Current()` method to access the "recursive member".
+Recursive CTE behaves like an iterator. ELINQ provides `Current()` method to access the "recursive member".
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/RecursiveCTE.cs --region A
 ```

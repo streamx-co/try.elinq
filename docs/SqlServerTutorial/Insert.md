@@ -4,7 +4,7 @@
 
 In SQL, `INSERT` requires an ad-hoc specification of columns to insert to. There is a similar concept in C# - [value tuple](https://docs.microsoft.com/en-us/dotnet/csharp/tuples).
 
-XLinq defines an extension method - `@using()` that accepts a tuple. The returned object has several `RowXXX()` overloads to create `VALUES` parameters in a type-safe way.
+ELINQ defines an extension method - `@using()` that accepts a tuple. The returned object has several `RowXXX()` overloads to create `VALUES` parameters in a type-safe way.
 
 ```cs --project ../../SqlServerTutorial/SqlServerTutorial.csproj --source-file ../../SqlServerTutorial/Basic/Insert.cs --region T1
 ```
