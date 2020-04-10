@@ -70,7 +70,7 @@ namespace SqlServerTutorial {
                     .HasColumnName("product_name");
             });
             
-            XLinq.Configuration.RegisterVendorCapabilities();
+            ELinq.Configuration.RegisterVendorCapabilities();
         }
     }
 

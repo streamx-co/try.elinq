@@ -1,4 +1,4 @@
-# ELINQ
+# ELINQ (Entity LINQ)
 
 <big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](http://xlinq.live)
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL?label=ELINQ%20SQL)](https://www.nuget.org/packages/Streamx.Linq.SQL)
@@ -8,9 +8,9 @@ ELINQ is a Language Integrated Query (LINQ) technology for relational (SQL) data
 
 ## Don't we have LINQ for EF [already](https://docs.microsoft.com/en-us/ef/core/querying/)?
 
-**X** prefix provides 2 new capabilities:
+**E** prefix enhances LINQ with 2 new capabilities:
 
-- Full C# support for query creation: multiple statements inside lambda, variables, functions, etc.
+- Full power of C# for query creation: multiple statements inside lambda, variables, functions, etc.
 - No semantic gap with SQL. ELINQ declares SQL statements (like `SELECT`, `FROM`, `WHERE`) as first class C# methods, combining familiar syntax with intellisense, type safety and refactoring.
 
 As a result SQL becomes just "another" class library exposing its API locally, literally *"Language Integrated SQL"*.

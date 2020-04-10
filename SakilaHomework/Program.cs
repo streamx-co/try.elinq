@@ -48,7 +48,7 @@ namespace SakilaHomework {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 
-            XLinq.Configuration.RegisterVendorCapabilities();
+            ELinq.Configuration.RegisterVendorCapabilities();
 
             modelBuilder.Entity<ActorName>(entity => entity.HasNoKey());
             modelBuilder.Entity<ActorNameCount>(entity => entity.HasNoKey());
