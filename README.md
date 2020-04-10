@@ -34,5 +34,6 @@ ELINQ fully supports the modern SQL [DML](https://en.wikipedia.org/wiki/Data_man
 
 ## Where can I get ELINQ?
 
-<!-- The source code of this site is hosted on [GitHub](https://github.com/streamx-co/xlinq.live) with -->
-Setup [instructions](https://github.com/streamx-co/xlinq.live/blob/master/Setup.md) and [sample projects](https://github.com/streamx-co/xlinq.live/blob/master/RunLocally.md).
+- [Product site](https://entitylinq.com)
+- Setup [instructions](https://github.com/streamx-co/xlinq.live/blob/master/Setup.md)
+- [Sample projects](https://github.com/streamx-co/xlinq.live/blob/master/RunLocally.md).
