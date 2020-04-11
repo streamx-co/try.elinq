@@ -1,6 +1,6 @@
 # ELINQ (Entity LINQ)
 
-<big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](http://xlinq.live)
+<big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](http://try.entitylinq.com/)
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL?label=ELINQ%20SQL)](https://www.nuget.org/packages/Streamx.Linq.SQL)
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL.EFCore?label=ELINQ%20EF%20Core)](https://www.nuget.org/packages/Streamx.Linq.SQL.EFCore)
 
@@ -15,7 +15,7 @@ ELINQ is a Language Integrated Query (LINQ) technology for relational (SQL) data
 
 As a result SQL becomes just "another" class library exposing its API locally, literally *"Language Integrated SQL"*.
 
-## Curious?
+## Demo
 
 We took popular SQL tutorials and implemented **all examples** from them using ELINQ. We want to emphasize that **any** practical DML SQL can be expressed with ELINQ with **no compromises**.
 
@@ -35,5 +35,5 @@ ELINQ fully supports the modern SQL [DML](https://en.wikipedia.org/wiki/Data_man
 ## Where can I get ELINQ?
 
 - [Product site](https://entitylinq.com)
-- Setup [instructions](https://github.com/streamx-co/xlinq.live/blob/master/Setup.md)
-- [Sample projects](https://github.com/streamx-co/xlinq.live/blob/master/RunLocally.md).
+- Setup [instructions](https://github.com/streamx-co/try.elinq/blob/master/Setup.md)
+- [Sample projects](https://github.com/streamx-co/try.elinq/blob/master/RunLocally.md).
