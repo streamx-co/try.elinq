@@ -38,6 +38,7 @@ namespace SqlServerTutorial.Basic {
                 var set = category.@using((category.CategoryId, category.CategoryName, category.Amount));
                 WHEN_NOT_MATCHED().THEN(MERGE_INSERT(set.ColumnNames(), VALUES(set.RowFrom(staging))));
 
+                // is rarely used in common UPDATE - INSERT operation
                 WHEN_NOT_MATCHED_BY_SOURCE().THEN(DELETE());
 
                 Semicolon();

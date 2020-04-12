@@ -8,12 +8,13 @@ ELINQ is a Language Integrated Query (LINQ) technology for relational (SQL) data
 
 ## Don't we have LINQ for EF [already](https://docs.microsoft.com/en-us/ef/core/querying/)?
 
-**E** prefix enhances LINQ with 2 new capabilities:
+**ELINQ** enhances LINQ with new capabilities:
 
 - Full power of C# for query creation: multiple statements inside lambda, variables, functions, etc.
 - No semantic gap with SQL. ELINQ declares SQL statements (like `SELECT`, `FROM`, `WHERE`) as first class C# methods, combining familiar syntax with intellisense, type safety and refactoring.
+- No limitations. Any practical DML SQL can be expressed.
 
-As a result SQL becomes just "another" class library exposing its API locally, literally *"Language Integrated SQL"*.
+With ELINQ SQL becomes just "another" class library exposing its API locally, literally *"Language Integrated SQL"*.
 
 ## Demo
 
@@ -23,6 +24,7 @@ This site is built with a wonderful Try .NET technology. All the examples are in
 
 - [SQL Server Tutorial](docs/SqlServerTutorial/README.md) - 100+ examples covering the entire SQL
 - [Sakila Homework](docs/SakilaHomework/README.md) (MySQL database)
+- [Batch `INSERT`, bulk `UPDATE` and `UPSERT`](docs/tutorials/Modification.md) for efficient data modification
 
 ## EF Core Integration
 

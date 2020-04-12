@@ -17,7 +17,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Streamx.Linq.SQL" Version="3.1.6" />
+    <PackageReference Include="Streamx.Linq.SQL" Version="3.1.7" />
     <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="3.1.8" />
   </ItemGroup>
 

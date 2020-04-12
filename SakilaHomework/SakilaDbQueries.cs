@@ -50,6 +50,27 @@ namespace SakilaHomework {
             #endregion
 
         }
+        
+        public void TestUpsert() {
+            
+            var newOrExisting = DbContext.Store.First();
+            
+            #region TestUpsert
+            // There is a store which might already exist in the database.
+            // Should we add it or update? (PK is not always the only UNIQUE KEY)
+            newOrExisting.LastUpdate = DateTime.Now;
+
+            var rows = DbContext.Database.Query((Store store) => {
+                var view = store.@using((store.StoreId, store.AddressId, store.ManagerStaffId, store.LastUpdate));
+                INSERT().INTO(view);
+                VALUES(view.RowFrom(newOrExisting));
+                ON_DUPLICATE_KEY_UPDATE(() => store.LastUpdate = INSERTED_VALUES(store.LastUpdate));
+            });
+
+            Console.WriteLine($"{rows} rows affected");
+            #endregion
+
+        }
 
         public void Test2A() {
 
