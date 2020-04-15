@@ -1,6 +1,6 @@
 # ELINQ (Entity LINQ)
 
-<big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](http://try.entitylinq.com/)
+<big><sup>Interactive demo &rArr; </sup></big>[![Try_.NET Enabled](https://img.shields.io/badge/Try_.NET-Enabled-501078.svg)](https://try.entitylinq.com/)
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL?label=ELINQ%20SQL)](https://www.nuget.org/packages/Streamx.Linq.SQL)
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL.EFCore?label=ELINQ%20EF%20Core)](https://www.nuget.org/packages/Streamx.Linq.SQL.EFCore)
 
