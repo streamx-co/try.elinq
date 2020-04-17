@@ -4,7 +4,7 @@
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL?label=ELINQ%20SQL)](https://www.nuget.org/packages/Streamx.Linq.SQL)
 [![nuget](https://img.shields.io/nuget/vpre/Streamx.Linq.SQL.EFCore?label=ELINQ%20EF%20Core)](https://www.nuget.org/packages/Streamx.Linq.SQL.EFCore)
 
-ELINQ is a Language Integrated Query (LINQ) technology for relational (SQL) databases and EF Core. It  allows you to use C# (or your .NET language of choice) to write strongly typed queries.
+ELINQ is a Language Integrated Query (LINQ) technology for relational (SQL) databases and EF Core. It  allows you to use C# (or your .NET language of choice) to write strongly typed SQL queries.
 
 ## Don't we have LINQ for EF [already](https://docs.microsoft.com/en-us/ef/core/querying/)?
 
@@ -12,7 +12,7 @@ ELINQ is a Language Integrated Query (LINQ) technology for relational (SQL) data
 
 - Full power of C# for query creation: multiple statements inside lambda, variables, functions, etc.
 - No semantic gap with SQL. ELINQ declares SQL statements (like `SELECT`, `FROM`, `WHERE`) as first class C# methods, combining familiar syntax with intellisense, type safety and refactoring.
-- No limitations. Any practical DML SQL can be expressed.
+- No limitations. Any practical DML SQL can be expressed with C# elegance.
 
 With ELINQ SQL becomes just "another" class library exposing its API locally, literally *"Language Integrated SQL"*.
 
