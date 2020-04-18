@@ -22,7 +22,7 @@ namespace SqlServerTutorial.Basic {
 
             #region SalesSummary
             const String SALES_SUMMARY = "#sales_summary";
-            DbContext.Database.Query((OrderItems i, Products p, Brands b, Categories c) => {
+            DbContext.Database.Execute((OrderItems i, Products p, Brands b, Categories c) => {
                 var salesSummary = ToTable<SalesSummaryByYear>(SALES_SUMMARY);
 
                 SELECT<SalesSummaryByYear>(b.BrandName.@as(salesSummary.Brand),
@@ -116,7 +116,7 @@ namespace SqlServerTutorial.Basic {
             #region SalesSummary3
             var sales_summary = "#sales_summary";
 
-            DbContext.Database.Query(() => {
+            DbContext.Database.Execute(() => {
                 var salesSummary = ToTable<SalesSummaryByYear>(sales_summary);
 
                 var salesSummarySource = GetSalesSummaryTable();

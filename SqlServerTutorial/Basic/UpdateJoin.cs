@@ -18,7 +18,7 @@ namespace SqlServerTutorial.Basic {
         public void A() {
 
             #region A
-            var rows = DbContext.Database.Query((Commissions commissions, Commissions c, Targets t) => {
+            var rows = DbContext.Database.Execute((Commissions commissions, Commissions c, Targets t) => {
                 UPDATE(commissions)
                     .SET(() => commissions.Commission = c.BaseAmount * t.Percentage);
                 FROM(c).JOIN(t).ON(c.Target == t);

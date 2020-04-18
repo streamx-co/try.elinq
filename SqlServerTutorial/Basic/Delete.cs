@@ -20,7 +20,7 @@ namespace SqlServerTutorial.Basic {
         public void T1() {
 
             #region T1
-            var rows = DbContext.Database.Query((Products products) => {
+            var rows = DbContext.Database.Execute((Products products) => {
                 PrepareProductHistory(products);
                 var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
@@ -34,7 +34,7 @@ namespace SqlServerTutorial.Basic {
         public void T2() {
 
             #region T2
-            var rows = DbContext.Database.Query((Products products) => {
+            var rows = DbContext.Database.Execute((Products products) => {
                 PrepareProductHistory(products);
                 var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
@@ -48,7 +48,7 @@ namespace SqlServerTutorial.Basic {
         public void T3() {
 
             #region T3
-            var rows = DbContext.Database.Query((Products products) => {
+            var rows = DbContext.Database.Execute((Products products) => {
                 PrepareProductHistory(products);
                 var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 
@@ -63,7 +63,7 @@ namespace SqlServerTutorial.Basic {
         public void T4() {
 
             #region T4
-            var rows = DbContext.Database.Query((Products products) => {
+            var rows = DbContext.Database.Execute((Products products) => {
                 PrepareProductHistory(products);
                 var productHistory = ToTable<Products>(PRODUCT_HISTORY);
 

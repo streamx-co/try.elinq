@@ -60,7 +60,7 @@ namespace SakilaHomework {
             // Should we add it or update? (PK is not always the only UNIQUE KEY)
             newOrExisting.LastUpdate = DateTime.Now;
 
-            var rows = DbContext.Database.Query((Store store) => {
+            var rows = DbContext.Database.Execute((Store store) => {
                 var view = store.@using((store.StoreId, store.AddressId, store.ManagerStaffId, store.LastUpdate));
                 INSERT().INTO(view);
                 VALUES(view.RowFrom(newOrExisting));

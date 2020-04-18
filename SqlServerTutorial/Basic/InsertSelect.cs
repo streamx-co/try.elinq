@@ -18,7 +18,7 @@ namespace SqlServerTutorial.Basic {
         public void T1() {
 
             #region T1
-            var rows = DbContext.Database.Query((Customers customer, Addresses address) => {
+            var rows = DbContext.Database.Execute((Customers customer, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
                 INSERT().INTO(set);
@@ -36,7 +36,7 @@ namespace SqlServerTutorial.Basic {
             #region T2
             var cities = new[] {"Santa Cruz", "Baldwin"};
 
-            var rows = DbContext.Database.Query((Stores stores, Addresses address) => {
+            var rows = DbContext.Database.Execute((Stores stores, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
                 INSERT().INTO(set);
@@ -53,7 +53,7 @@ namespace SqlServerTutorial.Basic {
         public void T3() {
 
             #region T3
-            var rows = DbContext.Database.Query((Customers customer, Addresses address) => {
+            var rows = DbContext.Database.Execute((Customers customer, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
                 INSERT(TOP(10)).INTO(set);
@@ -69,7 +69,7 @@ namespace SqlServerTutorial.Basic {
         public void T4() {
 
             #region T4
-            var rows = DbContext.Database.Query((Customers customer, Addresses address) => {
+            var rows = DbContext.Database.Execute((Customers customer, Addresses address) => {
                 var set = address.@using((address.Street, address.City, address.State, address.ZipCode));
 
                 INSERT(TOP(10).PERCENT()).INTO(set);

@@ -23,7 +23,7 @@ namespace SqlServerTutorial.Basic {
             var startDate = "20180601";
             var expiredDate = "20180901";
 
-            var rows = DbContext.Database.Query((Promotions promo) => {
+            var rows = DbContext.Database.Execute((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
                 INSERT().INTO(set);
                 VALUES(set.Row((name, discount, DataTypes.DATE.Raw(startDate), DataTypes.DATE.Raw(expiredDate))));
@@ -46,7 +46,7 @@ namespace SqlServerTutorial.Basic {
         public void T1_1() {
 
             #region T1_1
-            var rows = DbContext.Database.Query((Promotions promo) => {
+            var rows = DbContext.Database.Execute((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.Discount, promo.StartDate, promo.ExpiredDate));
                 INSERT().INTO(set);
                 VALUES(set.RowFrom(newPromo));
@@ -60,7 +60,7 @@ namespace SqlServerTutorial.Basic {
         public void T1_2() {
 
             #region T1_2
-            var rows = DbContext.Database.Query((Promotions promo) => {
+            var rows = DbContext.Database.Execute((Promotions promo) => {
                 var set = promo.@using((promo.PromotionName, promo.StartDate, promo.ExpiredDate, promo.Discount));
                 INSERT().INTO(set);
                 VALUES(set.RowFrom(newPromo, DEFAULT()));

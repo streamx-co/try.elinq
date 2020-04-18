@@ -18,7 +18,7 @@ namespace SqlServerTutorial.Basic {
         public void T1() {
 
             #region T1
-            var rows = DbContext.Database.Query((Taxes taxes) =>
+            var rows = DbContext.Database.Execute((Taxes taxes) =>
                 UPDATE(taxes).SET(() => taxes.UpdatedAt = GETDATE()));
 
             Console.WriteLine($"{rows} rows affected");
@@ -31,7 +31,7 @@ namespace SqlServerTutorial.Basic {
             #region T2
             var one = 0.01M;
             var two = 0.02M;
-            var rows = DbContext.Database.Query((Taxes taxes) => {
+            var rows = DbContext.Database.Execute((Taxes taxes) => {
                 UPDATE(taxes)
                     .SET(() => {
                         taxes.MaxLocalTaxRate += two;
