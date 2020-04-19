@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>EFCoreIssues</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="package_fullBuild.binlog"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0"/>
+        <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.20104.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Streamx.Linq.SQL" Version="3.1.8" />
+        <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="3.1.9" />
+    </ItemGroup>
+
+    <!--<ItemGroup>
+        <ProjectReference Include="..\..\XLinq.SQL\SQL.Net\SQL.Net.csproj"/>
+        <ProjectReference Include="..\..\XLinq\SQL.Net.EFCore\SQL.Net.EFCore.csproj"/>
+    </ItemGroup>-->
+
+</Project>

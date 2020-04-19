@@ -25,6 +25,7 @@ This site is built with a wonderful Try .NET technology. All the examples are in
 - [SQL Server Tutorial](docs/SqlServerTutorial/README.md) - 100+ examples covering the entire SQL
 - [Sakila Homework](docs/SakilaHomework/README.md) (MySQL database)
 - [Batch `INSERT`, bulk `UPDATE` and `UPSERT`](docs/tutorials/Modification.md) for efficient data modification
+- [EF Core Issues](docs/issues/Core.md) - solutions to EF Core unsupported functionality or issues
 
 ## EF Core Integration
 
