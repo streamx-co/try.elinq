@@ -18,30 +18,25 @@ using static Streamx.Linq.SQL.TransactSQL.SQL;
 
 namespace EFCoreIssues {
     public class Issue20505 {
-
-        public static void EnsureDatabase() {
-            using var dbContext = new MyContext();
-            dbContext.Database.EnsureCreated();
-        }
-        
         public void Test() {
             using var dbContext = new MyContext();
             // dbContext.Database.EnsureDeleted();
-            
+            dbContext.Database.EnsureCreated();
+
 
             using var t = dbContext.Database.BeginTransaction();
-                /*var t1 = dbContext.Floors.Where(f => f.Id == 1)
-                    .Select(f => new {
-                        SpaceGroups = f.Spaces
-                            .SelectMany(fs => fs.SpaceGroupFloorSpaces.Select(sgfs => sgfs.SpaceGroup))
-                            .Distinct()
-                            .OrderBy(s => s.Name)
-                            .Select(g => new {
-                                g.Id,
-                            }),
-                    });
-                
-                Console.WriteLine(t1.FirstOrDefault());*/
+            /*var t1 = dbContext.Floors.Where(f => f.Id == 1)
+                .Select(f => new {
+                    SpaceGroups = f.Spaces
+                        .SelectMany(fs => fs.SpaceGroupFloorSpaces.Select(sgfs => sgfs.SpaceGroup))
+                        .Distinct()
+                        .OrderBy(s => s.Name)
+                        .Select(g => new {
+                            g.Id,
+                        }),
+                });
+            
+            Console.WriteLine(t1.FirstOrDefault());*/
 
             Test20505(dbContext);
 

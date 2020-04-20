@@ -12,7 +12,9 @@ RUN mkdir -p /run/nginx/    \
     && cd /elinq/SqlServerTutorial/    \
     && dotnet build SqlServerTutorial.csproj /bl:package_fullBuild.binlog   \
     && cd /elinq/SakilaHomework/    \
-    && dotnet build SakilaHomework.csproj /bl:package_fullBuild.binlog
+    && dotnet build SakilaHomework.csproj /bl:package_fullBuild.binlog   \
+    && cd /elinq/EFCoreIssues/    \
+    && dotnet build EFCoreIssues.csproj /bl:package_fullBuild.binlog
 
 EXPOSE 80
 

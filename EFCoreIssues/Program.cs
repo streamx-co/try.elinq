@@ -14,8 +14,6 @@ namespace EFCoreIssues {
             if (sourceFile != null)
                 ExecuteSingleExample(region, sourceFile);
             else {
-                
-                Issue20505.EnsureDatabase();
 
                 var target = typeof(Issue20505);
                 ExecuteAllExamples(target);
