@@ -66,23 +66,28 @@ namespace SqlServerTutorial.Basic {
         public void B() {
 
             #region B
+            int? managerId = null; //or specific "highest" manager id
+
             var query = DbContext.Staffs.Query(() => {
-                var org = SubQuery((Staffs topManagers, Staffs employee) => {
-                    var r = SELECT(topManagers);
-                    FROM(topManagers);
-                    WHERE(topManagers.Manager == null);
+                var org = SubQuery((Staffs managers, Staffs employees) => {
+                    var r = SELECT(managers);
+                    FROM(managers);
+                    WHERE(managers.ManagerId == managerId);
 
                     UNION_ALL();
 
                     var manager = r.Current();
 
-                    SELECT(employee);
-                    FROM(employee).JOIN(manager).ON(employee.Manager == manager);
+                    SELECT(employees);
+                    FROM(employees).JOIN(manager).ON(employees.Manager == manager);
 
                     return r;
                 });
 
                 WITH(org);
+                
+                // At this point org "table" contains the employees we need
+                // We can SELECT, JOIN, or filter it as any other table.
 
                 var result = SELECT(org);
                 FROM(org);
