@@ -16,10 +16,11 @@ To run locally examples from this tutorial follow these [instructions](RunLocall
   - `using static Streamx.Linq.SQL.Directives;`
   - `using static Streamx.Linq.SQL.AggregateFunctions;`
   - `using static Streamx.Linq.SQL.Operators;`
+  - `using static Streamx.Linq.SQL.ScalarFunctions;`
 
 - Register capabilities:
 
-  Registers language substitutions like `String.Length => LENGTH(String)`. Should be done only once, for example inside `OnModelCreating()` of your DbContext:
+  Registers vendor SQL dialect and language substitutions, like `String.Length => LENGTH(String)`. Should be done only once, for example inside `OnModelCreating()` of your DbContext:
 
   ```cs
   protected override void OnModelCreating(ModelBuilder modelBuilder) {
