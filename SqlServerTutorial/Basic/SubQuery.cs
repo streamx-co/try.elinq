@@ -29,11 +29,11 @@ namespace SqlServerTutorial.Basic {
                     var r = SELECT(orders);
                     FROM(orders);
                     WHERE(SubQuery((Customers customers) => {
-                        var id = SELECT((int?) customers.CustomerId);
+                        var id = SELECT(customers.CustomerId);
                         FROM(customers);
                         WHERE(customers.City == city);
                         return id.AsCollection();
-                    }).Contains(orders.CustomerId));
+                    }).Contains(orders.CustomerId.GetValueOrDefault()));
 
                     return r;
                 })
@@ -54,7 +54,7 @@ namespace SqlServerTutorial.Basic {
             var query = DbContext.Orders
                 .Query((Orders orders) => {
                     var customersInCity = SubQuery((Customers customers) => {
-                        var id = SELECT((int?) customers.CustomerId);
+                        var id = SELECT(customers.CustomerId);
                         FROM(customers);
                         WHERE(customers.City == city);
                         return id.AsCollection();
@@ -62,7 +62,7 @@ namespace SqlServerTutorial.Basic {
 
                     var r = SELECT(orders);
                     FROM(orders);
-                    WHERE(customersInCity.Contains(orders.CustomerId));
+                    WHERE(customersInCity.Contains(orders.CustomerId.GetValueOrDefault()));
 
                     return r;
                 })

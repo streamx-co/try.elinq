@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>SqlServerTutorial</RootNamespace>
   </PropertyGroup>
 
@@ -11,14 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.1" />
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.20104.2" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="Streamx.Linq.SQL" Version="3.1.9" />
-    <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="3.1.11" />
+    <PackageReference Include="Streamx.Linq.SQL" Version="3.1.11" />
+    <PackageReference Include="Streamx.Linq.SQL.EFCore " Version="5.0.0" />
   </ItemGroup>
 
   <!--<ItemGroup>
@@ -44,11 +44,5 @@
   <ItemGroup>
     <ProjectReference Include="../Models/Models.csproj" />
   </ItemGroup>
-
-  <!--<ItemGroup>
-    <Reference Include="Models">
-      <HintPath>../Models/bin/Release/netstandard2.0/Models.dll</HintPath>
-    </Reference>
-  </ItemGroup>-->
 
 </Project>

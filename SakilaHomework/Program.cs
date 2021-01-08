@@ -36,7 +36,7 @@ namespace SakilaHomework {
 
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
             optionsBuilder.UseMySql("server=mysql;port=3376;user=root;password=455Password;database=sakila;pooling=true;charset=utf8",
-                x => x.ServerVersion("8.0-mysql"));
+                    MySqlServerVersion.LatestSupportedServerVersion);
 
             base.OnConfiguring(optionsBuilder);
         }
