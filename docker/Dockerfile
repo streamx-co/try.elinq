@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
+FROM mcr.microsoft.com/dotnet/sdk:3.1
 
 RUN apk add --no-cache nginx \
-    && dotnet tool update -g dotnet-try
+    && dotnet tool update -g Microsoft.dotnet-try
 
 COPY ./ /elinq
 
