@@ -18,7 +18,7 @@ With ELINQ SQL becomes just "another" class library exposing its API locally, li
 
 ## Demo
 
-We took popular SQL tutorials and implemented **all examples** from them using ELINQ. We want to emphasize that **any** practical DML SQL can be expressed with ELINQ with **no compromises**.
+We took popular [SQL tutorials](https://www.scaler.com/topics/sql/) and implemented **all examples** from them using ELINQ. We want to emphasize that **any** practical DML SQL can be expressed with ELINQ with **no compromises**.
 
 This site is built with a wonderful Try .NET technology. All the examples are interactive, intellisense enabled and runnable with changes you may make. Enjoy!
 
