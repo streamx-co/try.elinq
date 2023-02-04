@@ -1,14 +1,16 @@
-FROM mcr.microsoft.com/dotnet/sdk:3.1
+FROM mcr.microsoft.com/dotnet/sdk:3.1-alpine
+#FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine
 
 RUN apk add --no-cache nginx \
     && dotnet tool update -g Microsoft.dotnet-try
 
 COPY ./ /elinq
 
+#-p:Configuration=Release 
 RUN mkdir -p /run/nginx/    \
-    && cp /elinq/docker/default.conf /etc/nginx/conf.d/    \
+    && cp /elinq/docker/default.conf /etc/nginx/http.d/    \
     && cd /elinq/Models/    \
-    && dotnet build -p:Configuration=Release Models.csproj   \
+    && dotnet build Models.csproj   \
     && cd /elinq/SqlServerTutorial/    \
     && dotnet build SqlServerTutorial.csproj /bl:package_fullBuild.binlog   \
     && cd /elinq/SakilaHomework/    \

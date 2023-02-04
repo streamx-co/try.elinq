@@ -180,7 +180,7 @@ namespace EFCoreIssues {
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
                 optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
-                optionsBuilder.UseSqlServer(@"Server=mssql,1473;Database=Repro20505;User Id=sa;Password=455Password");
+                optionsBuilder.UseSqlServer(@"Server=mssql,1473;Database=Repro20505;User Id=sa;Password=455Password;encrypt=false");
             }
         }
     }
