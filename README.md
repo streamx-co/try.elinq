@@ -29,7 +29,7 @@ This site is built with a wonderful Try .NET technology. All the examples are in
 
 ## EF Core Integration
 
-By integrating with EF, ELINQ maps EF entities to SQL table and column names.
+By integrating with EF, ELINQ maps EF entities to SQL table and column names. The final SQL statement is passed to [FromSqlRaw](https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalqueryableextensions.fromsqlraw) method, which returns a standard `IQueryable`. As a result, the regular EF pipeline is used for execution. Calls to other EF methods can be freely combined with ELINQ.
 
 ## SQL Support
 
